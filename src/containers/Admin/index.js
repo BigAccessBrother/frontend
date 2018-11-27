@@ -16,7 +16,6 @@ class Admin extends Component {
             <div>
             { this.props.auth.isLoggedIn && this.props.auth.isAdmin ? null : <Redirect to="/" /> }
                 <MainFrame>
-                    <h1>So you are the admin user...</h1>
                     {
                         this.props.content.agents ?
                         <AgentList agents={this.props.content.agents} /> :
