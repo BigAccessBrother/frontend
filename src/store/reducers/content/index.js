@@ -1,6 +1,6 @@
 import { types } from "../../../constants";
 
-initialState = {
+const initialState = {
     loading: true,
 }
 

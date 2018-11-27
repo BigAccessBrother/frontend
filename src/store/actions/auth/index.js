@@ -33,10 +33,36 @@ export const login = (username, password) => (dispatch, getState) => {
         })
         
         // get user profile
-        dispatch(setActiveUser());
+        dispatch(getActiveUser());
     })
     .catch(error => {
         console.log(error)
         alert('something went wrong')
     })
+}
+
+export const checkToken = (store) => {
+    
+    // check if there is am active user
+    if (!store.getState().auth.isLoggedIn) {
+
+        // check if there is a token in localstorage
+        if (window.localStorage.getItem('BAB-token')) {
+            
+            // save token to state
+            console.log('getting token from localStorage')
+            store.dispatch({
+                type: types.SET_TOKEN,
+                payload: {
+                    token: window.localStorage.getItem('BAB-token')
+                }
+            })
+            
+            // set active user
+            store.dispatch(getActiveUser())
+
+        } else {
+            console.log('no token in localStorage');
+        }
+    }
 }

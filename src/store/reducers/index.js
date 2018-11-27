@@ -15,4 +15,4 @@ import content from './content';
 //     }
 // }
 
-export default combineReducers(auth, content);
+export default combineReducers({ auth, content });

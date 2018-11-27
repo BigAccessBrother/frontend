@@ -2,7 +2,7 @@ import { types } from "../../../constants";
 import axios from "axios";
 
 
-initialState = {
+const initialState = {
     token: '',
     activeUser: {},
     isLoggedIn: false,
