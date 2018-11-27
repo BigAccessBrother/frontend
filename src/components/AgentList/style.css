@@ -1,0 +1,4 @@
+.AgentList {
+    display: flex;
+    flex-wrap: wrap;
+}
