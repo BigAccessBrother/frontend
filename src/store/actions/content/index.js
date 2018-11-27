@@ -1,3 +1,5 @@
+import axios from "axios";
+import { types } from "../../../constants";
 
 
 export const getContent = (contentType, endpoint) => (dispatch, getState) => {
@@ -9,11 +11,11 @@ export const getContent = (contentType, endpoint) => (dispatch, getState) => {
     dispatch({ type: types.LOADING })
     axios.get(endpoint)
     .then(response => {
-        console.log('content: ', contenttype, response.data)
+        console.log('content: ', contentType, response.data)
         dispatch({
             type: types.SET_CONTENT,
             payload: {
-                key: contenttype,
+                key: contentType,
                 value: response.data
             }
         })     

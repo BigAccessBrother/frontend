@@ -9,7 +9,7 @@ export const getActiveUser = () => (dispatch, getState) => {
         dispatch({
             type: types.SET_ACTIVE_USER,
             payload: {
-                user: response.data[0] // this needs to be changed once back-end is up to date
+                user: response.data
             }
         })
     })
