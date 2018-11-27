@@ -1,5 +1,5 @@
 import React from 'react';
-import AgentItem from '../AgentItem';
+import AgentItem from '../../containers/AgentItem';
 import './style.css';
 
 const AgentList = (props) => {

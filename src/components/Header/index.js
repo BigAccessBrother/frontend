@@ -26,7 +26,7 @@ function Header(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
             BAB for RepRisk - Control Panel
