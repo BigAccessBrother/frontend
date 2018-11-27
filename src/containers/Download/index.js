@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import MainFrame from '../../components/MainFrame';
 
 
 class Download extends Component {
@@ -9,12 +10,14 @@ class Download extends Component {
         return (
             <div>
                 { this.props.isLoggedIn ? null : <Redirect to="/" /> }
-                <h1>one day you'll be able to download the agent installer from this page</h1>
+                <MainFrame>
+                    <h4>one day you'll be able to download the agent installer from this page</h4>
+                </MainFrame>
             </div>
         )
     }
 }
 
 export default connect(
-    ({ auth }) => ({ auth })
+    ({ auth })  => ({ isLoggedIn: auth.isLoggedIn, isAdmin: auth.isAdmin })
 )(Download);

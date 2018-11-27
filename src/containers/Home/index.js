@@ -23,5 +23,5 @@ class Home extends Component {
 }
 
 export default connect(
-    ({ auth })  => ({ auth })
+    ({ auth })  => ({ isLoggedIn: auth.isLoggedIn, isAdmin: auth.isAdmin })
 )(Home);

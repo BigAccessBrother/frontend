@@ -9,7 +9,7 @@ export const getActiveUser = () => (dispatch, getState) => {
         dispatch({
             type: types.SET_ACTIVE_USER,
             payload: {
-                user: response.data
+                user: response.data[0] // this needs to be changed once back-end is up to date
             }
         })
     })
@@ -20,6 +20,7 @@ export const getActiveUser = () => (dispatch, getState) => {
 }
 
 export const login = (username, password) => (dispatch, getState) => {
+
     axios.post('auth/token/', { username, password })
     .then(response => {
 
