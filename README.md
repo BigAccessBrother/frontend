@@ -1,1 +1,1 @@
-###Front-end GUI for the BAB endpoint security system control panel
+## Front-end GUI for the BAB endpoint security system control panel
