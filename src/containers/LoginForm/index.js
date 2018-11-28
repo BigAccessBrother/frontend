@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import './style.css';
 
 const styles = theme => ({
     container: {
@@ -53,7 +54,7 @@ class Login extends Component {
         const { classes } = this.props;
 
         return (
-            <div className="Login">
+            <div className="LoginForm">
                 <form 
                     className={classes.container} 
                     noValidate 

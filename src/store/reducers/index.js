@@ -9,6 +9,8 @@ import content from './content';
 //         isLoggedIn: false
 //     },
 //     content: {
+//         loading: true
+//         agentfilter: null
 //         // agents: [],
 //         // users: [],
 //         // responses: []

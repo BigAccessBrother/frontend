@@ -8,10 +8,9 @@ export const getContent = (contentType, endpoint) => (dispatch, getState) => {
     // endpoint is the API endpoint that we're sending our request to
     // contenttype is where we store the data in our redux state
     // --> state.content.contenttype
-    dispatch({ type: types.LOADING })
+    dispatch({ type: types.LOADING });
     axios.get(endpoint)
     .then(response => {
-        console.log('content: ', contentType, response.data)
         dispatch({
             type: types.SET_CONTENT,
             payload: {
@@ -22,6 +21,24 @@ export const getContent = (contentType, endpoint) => (dispatch, getState) => {
     })  
     .catch(function (error) {
         console.log(error);
-        alert('something went wrong!')
+    });
+}
+
+export const getAgentDetail = agent => (dispatch, getState) => {
+    dispatch({ type: types.LOADING });
+    axios.get(`response/agent/${agent.id}/`)
+    .then(response => {
+        dispatch({
+            type: types.SET_AGENT_DETAIL,
+            payload: {
+                data: {
+                    agent,
+                    responses: response.data
+                }
+            }
+        })
+    })  
+    .catch(function (error) {
+        console.log(error);
     });
 }

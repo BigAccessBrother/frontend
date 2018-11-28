@@ -1,24 +1,37 @@
 import React from 'react';
 import AgentItem from '../../containers/AgentItem';
+import AgentFilters from '../../containers/AgentFilters';
 import './style.css';
+import AgentDetail from '../../containers/AgentDetail';
+import { connect } from 'react-redux';
+
 
 const AgentList = (props) => {
     console.log('agentList', props);
     
     return (
         <div className="AgentList">
+            <AgentFilters />
+            { props.content.agentDetail.agent.id ?
+            <AgentDetail
+                agent={props.content.agentDetail.agent}
+                responses={props.content.agentDetail.responses}
+            /> :
+            null }
+            <div className="AgentList-container">
             {
-                props.agents ?
-                    props.agents.map(agent => {
-                            return (
-                                <AgentItem key={agent.computer_name} agent={agent} />
-                            )
-                        }
-                    )
-                : null
+                props.content.agents ?
+                    props.content.agents.map(agent => props.content.agentFilter(agent) ?
+                                <AgentItem key={agent.computer_name} agent={agent} /> : 
+                                null 
+                    ) :
+                null
             }
+            </div>
         </div>
     )
 }
 
-export default AgentList;
+export default connect(
+    ({ content }) => ({ content })
+)(AgentList);
