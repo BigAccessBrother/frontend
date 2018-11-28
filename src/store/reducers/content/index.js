@@ -2,7 +2,7 @@ import { types } from "../../../constants";
 
 const initialState = {
     loading: true,
-    agentfilter: agent => true,
+    agentFilter: agent => true,
 }
 
 export default (state = initialState, action) => {

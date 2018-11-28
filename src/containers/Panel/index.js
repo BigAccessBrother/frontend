@@ -44,7 +44,10 @@ class Admin extends Component {
                     { this.state.value === 0 && <div >
                         {
                         this.props.content.agents ?
-                        <AgentList agents={this.props.content.agents} /> :
+                        <AgentList 
+                            agents={this.props.content.agents}
+                            filter={this.props.content.agentFilter}
+                        /> :
                         <div>loading</div>
                         }
                     </div> }
