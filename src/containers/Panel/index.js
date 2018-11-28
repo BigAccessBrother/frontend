@@ -42,10 +42,7 @@ class Admin extends Component {
                         </Tabs>
                     </AppBar>
                     { this.state.value === 0 && 
-                        <AgentList 
-                            agents={this.props.content.agents}
-                            filter={this.props.content.agentFilter}
-                        /> }
+                        <AgentList /> }
                     { this.state.value === 1 && 
                         <div >Security Standards go here</div> }
                     { this.state.value === 2 && 

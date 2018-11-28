@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import monitor from '../../assets/icons/monitor.png';
+import { connect } from 'react-redux';
 import './style.css';
+import { getAgentDetail } from '../../store/actions/content';
 
 class AgentItem extends Component {
 
@@ -13,9 +15,16 @@ class AgentItem extends Component {
         return `${day}/${month}, ${hour}:${minutes}`
     }
 
+    handleClick = () => {
+        this.props.dispatch(getAgentDetail(this.props.agent))
+    }
+
     render() {
         return(
-            <div className={`AgentItem ${this.props.agent.secure ? "AgentItem-secure" : "AgentItem-not-secure"}`}>
+            <div 
+                className={`AgentItem ${this.props.agent.secure ? "AgentItem-secure" : "AgentItem-not-secure"}`}
+                onClick={this.handleClick}
+            >
                 <img 
                     src={ monitor }
                     alt="machine"
@@ -28,4 +37,4 @@ class AgentItem extends Component {
     }
 }
 
-export default AgentItem;
+export default connect()(AgentItem);
