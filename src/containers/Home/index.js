@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import LoginForm from '../LoginForm';
+import Header from '../../components/Header';
 
 
 class Home extends Component {
@@ -9,11 +10,11 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>Hello BAB from RepRisk</h1>
+                <Header />
                 { 
                     this.props.isLoggedIn ? 
                         this.props.isAdmin ? 
-                            <Redirect to="/admin/" /> : 
+                            <Redirect to="/panel/" /> : 
                             <Redirect to="/download/" /> :
                         <LoginForm />
                 }

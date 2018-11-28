@@ -26,15 +26,17 @@ function Header(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
             BAB for RepRisk - Control Panel
           </Typography>
+          { props.logout ? 
           <Button 
             color="inherit"
             onClick={() => { props.dispatch({ type: types.LOGOUT }) }}  
-          >Logout</Button>
+          >Logout</Button> :
+          null }
         </Toolbar>
       </AppBar>
     </div>

@@ -9,3 +9,7 @@ body {
   color: white;
   font-family: Roboto;
 }
+
+h1 {
+  text-align: center;
+}

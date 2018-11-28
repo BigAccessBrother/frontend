@@ -4,20 +4,20 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import store from './store';
-import { blue, yellow } from '@material-ui/core/colors'
+import { blue, amber } from '@material-ui/core/colors'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import { baseAPIUrl } from './constants';
 import { checkToken } from './store/actions/auth';
 import Home from './containers/Home';
-import Admin from './containers/Admin';
+import Panel from './containers/Panel';
 import Download from './containers/Download';
 
 
 const theme = createMuiTheme({
     palette: {
-        primary: yellow,
+        primary: amber,
         secondary: blue,
         type: 'dark',
     },
@@ -36,7 +36,7 @@ ReactDOM.render(
         <Provider store={ store }>
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/admin/" component={ Admin } />
+                    <Route exact path="/panel/" component={ Panel } />
                     <Route exact path="/download/" component={ Download } />
                     <Route path="/" component={ Home } />
                 </Switch>
