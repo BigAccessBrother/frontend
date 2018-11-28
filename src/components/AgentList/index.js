@@ -1,7 +1,9 @@
 import React from 'react';
 import AgentItem from '../../containers/AgentItem';
-import './style.css';
 import AgentFilters from '../../containers/AgentFilters';
+import './style.css';
+import AgentDetail from '../../containers/AgentDetail';
+
 
 const AgentList = (props) => {
     console.log('agentList', props);
@@ -9,16 +11,16 @@ const AgentList = (props) => {
     return (
         <div className="AgentList">
             <AgentFilters />
+            <AgentDetail />
+            {}
             <div className="AgentList-container">
             {
                 props.agents ?
-                    props.agents.map(agent => {
-                            return props.filter(agent) ? (
-                                <AgentItem key={agent.computer_name} agent={agent} />
-                            ) : null
-                        }
-                    )
-                : null
+                    props.agents.map(agent => props.filter(agent) ?
+                                <AgentItem key={agent.computer_name} agent={agent} /> : 
+                                null 
+                    ) :
+                null
             }
             </div>
         </div>

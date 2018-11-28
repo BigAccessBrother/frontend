@@ -41,18 +41,15 @@ class Admin extends Component {
                             <Tab label="Users" />
                         </Tabs>
                     </AppBar>
-                    { this.state.value === 0 && <div >
-                        {
-                        this.props.content.agents ?
+                    { this.state.value === 0 && 
                         <AgentList 
                             agents={this.props.content.agents}
                             filter={this.props.content.agentFilter}
-                        /> :
-                        <div>loading</div>
-                        }
-                    </div> }
-                    { this.state.value === 1 && <div >Security Standards</div> }
-                    { this.state.value === 2 && <div >Users</div> }
+                        /> }
+                    { this.state.value === 1 && 
+                        <div >Security Standards go here</div> }
+                    { this.state.value === 2 && 
+                        <div >Users go here</div> }
                 </MainFrame>
             </div>
         )
