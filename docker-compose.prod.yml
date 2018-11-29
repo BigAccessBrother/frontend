@@ -8,9 +8,16 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
+      - frontend:/frontend 
     ports: 
       - '3000:3000'
     environment:
      - NOED_ENV=development
+
+volumes:
+  frontend:
+
+networks:
+  default:
+    external:
+      name: bab
