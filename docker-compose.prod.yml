@@ -7,11 +7,12 @@ services:
     volumes:
       - frontend:/frontend
     environment:
-     - NOED_ENV=development
-    command: /bin/bash 'rm /frontend/* && mv /build/* /frontend/' 
+     - NODE_ENV=development
+    command: /bin/bash -c 'rm -rf /frontend/* && cp -r /app/build/* /frontend' 
 
 volumes:
   frontend:
+    external: true
 
 networks:
   default:

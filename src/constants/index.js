@@ -8,4 +8,4 @@ export const types = {
     SET_AGENT_DETAIL: 'SET_AGENT_DETAIL',
 }
 
-export const baseAPIUrl = 'https://accessbrother.propulsion-learn.ch/api/';
+export const baseAPIUrl = 'https://accessbrother.propulsion-learn.ch/backend/api/';
