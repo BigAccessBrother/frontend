@@ -8,7 +8,7 @@ services:
       - frontend:/frontend
     environment:
      - NOED_ENV=development
-    command: /bin/bash 'rm /frontend/* && mv /build/* /frontend/' 
+    command: bash -c 'rm -rf /frontend/* && cp -r /app/dist/* /frontend' 
 
 volumes:
   frontend:
