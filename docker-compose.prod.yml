@@ -7,7 +7,7 @@ services:
     volumes:
       - frontend:/frontend
     environment:
-     - NOED_ENV=development
+     - NODE_ENV=development
     command: bash -c 'rm -rf /frontend/* && cp -r /app/dist/* /frontend' 
 
 volumes:
