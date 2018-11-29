@@ -27,6 +27,10 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 agentFilter: action.payload.filter,
+                agentDetail: {
+                    agent: {},
+                    responses: []
+                }
             }
         case types.SET_AGENT_DETAIL:
             return {
