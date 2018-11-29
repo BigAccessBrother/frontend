@@ -18,4 +18,4 @@ RUN npm install
 RUN npm install react-scripts@1.1.1 -g
 
 # start app
-CMD ["npm", "run build"]
+CMD ["npm", "run", "build"]
