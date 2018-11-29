@@ -12,6 +12,7 @@ services:
 
 volumes:
   frontend:
+    external: true
 
 networks:
   default:
