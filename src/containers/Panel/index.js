@@ -7,6 +7,7 @@ import AgentList from '../../components/AgentList';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import SecurityStandards from "../SecurityStandards";
 
 
 class Admin extends Component {
@@ -44,7 +45,7 @@ class Admin extends Component {
                     { this.state.value === 0 && 
                         <AgentList /> }
                     { this.state.value === 1 && 
-                        <div >Security Standards go here</div> }
+                        < SecurityStandards /> }
                     { this.state.value === 2 && 
                         <div >Users go here</div> }
                 </MainFrame>
