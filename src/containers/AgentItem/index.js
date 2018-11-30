@@ -19,12 +19,17 @@ class AgentItem extends Component {
         this.props.dispatch(getAgentDetail(this.props.agent))
     }
 
+    secure = () => this.props.agent.secure ? "AgentItem-secure" : "AgentItem-not-secure";
+    active = () => this.props.agent.is_active ? null : 'AgentItem-disabled';
+    detail = () => this.props.detail.id ?
+                    this.props.detail.id === this.props.agent.id ?
+                        'AgentItem-detail' : null : null
+
     render() {
         return(
             <div 
                 className={
-                    `AgentItem ${this.props.agent.secure ? "AgentItem-secure" : "AgentItem-not-secure"}`
-                    + ` ${this.props.agent.is_active ? null : 'AgentItem-disabled'}`
+                    `AgentItem ${this.secure()} ${this.active()} ${this.detail()}`
                 }
                 onClick={this.handleClick}
             >
@@ -37,4 +42,6 @@ class AgentItem extends Component {
     }
 }
 
-export default connect()(AgentItem);
+export default connect(
+    state => ({ detail: state.content.agentDetail.agent })
+)(AgentItem);
