@@ -3,7 +3,7 @@
 }
 
 body {
-  width: 80%;
+  max-width: 1390px;
   margin: 50px auto;
   background-color: rgb(9, 45, 65);
   color: white;

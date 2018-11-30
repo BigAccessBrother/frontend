@@ -10,7 +10,7 @@ import { types } from '../../constants';
 const filters = [
     ['all', agent => agent],
     ['secure', agent => agent.secure],
-    ['insecure', agent => !agent.secure],
+    ['not secure', agent => !agent.secure],
     ['active', agent => agent.is_active],
     ['inactive', agent => !agent.is_active]
 ]
