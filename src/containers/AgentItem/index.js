@@ -3,16 +3,17 @@ import monitor from '../../assets/icons/monitor.png';
 import { connect } from 'react-redux';
 import './style.css';
 import { getAgentDetail } from '../../store/actions/content';
+import OsIcon from '../../components/OsIcon';
+import { getTimeAndDate } from '../../utils';
+
 
 class AgentItem extends Component {
 
-    getTimeAndDate = () => {
-        const DateTime = new Date(this.props.agent.last_response_received);
-        const day = DateTime.getDay();
-        const month = DateTime.getMonth() + 1;
-        const hour = DateTime.getHours();
-        const minutes = DateTime.getMinutes();
-        return `${day}/${month}, ${hour}:${minutes}`
+    getInitials = () => {
+        const email = this.props.agent.user.email
+        const initials = email.slice(0, email.indexOf('@'))
+        const num = this.props.agent.computer_name.slice(-9,-8)
+        return `${initials} ${num}`
     }
 
     handleClick = () => {
@@ -25,13 +26,10 @@ class AgentItem extends Component {
                 className={`AgentItem ${this.props.agent.secure ? "AgentItem-secure" : "AgentItem-not-secure"}`}
                 onClick={this.handleClick}
             >
-                <img 
-                    src={ monitor }
-                    alt="machine"
-                />
-                <div className="AgentItem-email">{ this.props.agent.user.email }</div>
+                <OsIcon type={ this.props.agent.latest_response.os_type } />
+                <div className="AgentItem-email">{ this.getInitials() }</div>
                 <hr></hr>
-                <div>LR: { this.getTimeAndDate() }</div>
+                <div>LR: { getTimeAndDate(this.props.agent) }</div>
             </div>
         )
     }

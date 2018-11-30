@@ -38,8 +38,7 @@ ReactDOM.render(
                 <Switch>
                     <Route exact path="/panel/" component={ Panel } />
                     <Route exact path="/download/" component={ Download } />
-                    <Route exact path="/" component={ Home } />
-                </Switch>
+                    <Route exact path="/" component={ Home } />                </Switch>
             </BrowserRouter>
         </Provider>
     </MuiThemeProvider>, 

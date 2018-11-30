@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import monitor from '../../assets/icons/monitor.png';
 import cancel from '../../assets/icons/cancel.png';
 import check from '../../assets/icons/check.png';
+import { getTimeAndDate, getStringOrBool } from '../../utils';
+import OsIcon from '../../components/OsIcon';
 
 
 const styles = {
@@ -22,6 +24,9 @@ const styles = {
     height: 48,
     width: 48,
     margin: '20px',
+  },
+  icon: {
+    marginTop: '22px',
   },
   container: {
       display: 'flex',
@@ -34,17 +39,28 @@ class AgentDetail extends Component {
         expand: false
     }
 
+    handleClick = () => {
+      this.setState({
+        expand: !this.state.expand
+      })
+    }
+
     render() {
         const { classes } = this.props;
         return (
           <Card className={classes.card}>
-            <CardActionArea>
+            <CardActionArea
+              onClick={ this.handleClick }
+            >
               <div className={classes.container}>
                 <CardMedia
                     className={classes.media}
                     image={monitor}
                     title="machine"
                 />
+                <div className={classes.icon}>
+                  <OsIcon type={ this.props.agent.latest_response.os_type } />
+                </div>
                 <CardMedia
                     className={classes.media}
                     image={this.props.agent.secure ? check : cancel}
@@ -62,13 +78,21 @@ class AgentDetail extends Component {
                   owner: { this.props.agent.user.username }
                 </Typography>
                 <Typography component="p">
-                  latest response: { this.props.agent.last_response_received }
+                  latest response: { getTimeAndDate(this.props.agent) } (click to show details)
                 </Typography>
+                { this.state.expand ?
+                <ul>
+                  { Object.keys(this.props.agent.latest_response).map(key => (
+                    key === 'id' || key === 'agent' ? null :
+                    <li>{ key } : { getStringOrBool(this.props.agent.latest_response[key]) }</li>
+                  ))}
+                </ul> :
+                null } 
               </CardContent>
             </CardActionArea>
             <CardActions>
               <Button size="small" color="primary">
-                deactivate
+                deactivate agent
               </Button>
             </CardActions>
           </Card>
