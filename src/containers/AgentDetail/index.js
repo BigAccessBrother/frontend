@@ -15,6 +15,7 @@ import check from '../../assets/icons/check.png';
 import { getTimeAndDate, getStringOrBool } from '../../utils';
 import OsIcon from '../../components/OsIcon';
 import { activateDeactivateAgent } from '../../store/actions/content';
+import { types } from '../../constants';
 
 
 const styles = {
@@ -38,12 +39,21 @@ const styles = {
   container: {
       display: 'flex',
       justifyContent: 'center',
+  },
+  close: {
+    margin: '0 0 0 auto'
   }
 };
 
 class AgentDetail extends Component {
     state = {
         expand: false
+    }
+
+    componentWillMount = () => {
+      this.setState({
+        expand: false
+      })
     }
 
     expand = () => {
@@ -54,6 +64,18 @@ class AgentDetail extends Component {
 
     activateDeactivate = () => {
       this.props.dispatch(activateDeactivateAgent(this.props.agent))
+    }
+
+    close = () => {
+      this.props.dispatch({
+        type: types.SET_AGENT_DETAIL,
+        payload: {
+            data: {
+                agent: {},
+                responses: []
+            }
+        }
+      });
     }
 
     render() {
@@ -89,7 +111,7 @@ class AgentDetail extends Component {
                   owner: { this.props.agent.user.username }
                 </Typography>
                 <Typography component="p">
-                  { this.props.agent.last_response ?
+                  { this.props.agent.last_response_received ?
                     `latest response: ${ getTimeAndDate(this.props.agent) } (click to show details)` :
                     'No responses from this agent yet.'
                   }
@@ -111,6 +133,14 @@ class AgentDetail extends Component {
                 onClick={ this.activateDeactivate }
               >
                 { this.props.agent.is_active ? 'deactivate' : 'activate'} agent
+              </Button>
+              <Button 
+                className={classes.close}
+                size="small" 
+                color="primary"
+                onClick={ this.close }
+              >
+                close
               </Button>
             </CardActions>
           </Card>

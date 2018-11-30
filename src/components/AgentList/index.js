@@ -12,14 +12,14 @@ const AgentList = (props) => {
     return (
         <div className="AgentList">
             <AgentFilters />
-            <div className="AgentList-outer-container">
+            <div>
                 { props.content.agentDetail.agent.id ?
                 <AgentDetail
                     agent={props.content.agentDetail.agent}
                     responses={props.content.agentDetail.responses}
                 /> :
                 null }
-                <div className="AgentList-container">
+                <div className={`AgentList-container ${props.content.agentDetail.agent.id ? 'AgentList-with-detail' : null }`}>
                 {
                     props.content.agents ?
                         props.content.agents.map(agent => props.content.agentFilter(agent) ?
