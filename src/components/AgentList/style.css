@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 20px -5px;
-    float: right;
+    /* float: right; */
 }
 
 .AgentList-with-detail {

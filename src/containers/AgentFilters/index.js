@@ -9,8 +9,10 @@ import { types } from '../../constants';
 
 const filters = [
     ['all', agent => agent],
-    ['insecure', agent => !agent.secure],
     ['secure', agent => agent.secure],
+    ['insecure', agent => !agent.secure],
+    ['active', agent => agent.is_active],
+    ['inactive', agent => !agent.is_active]
 ]
 
 class AgentFilters extends React.Component {

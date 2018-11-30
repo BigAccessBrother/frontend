@@ -20,10 +20,9 @@ import { types } from '../../constants';
 
 const styles = {
   card: {
-    // margin: '30px auto 0 auto',
     width: 380,
-    marginTop: 30,
-    float: 'left',
+    margin: '10px 5px',
+    float: 'right',
   },
   disabled: {
     opacity: 0.7,
