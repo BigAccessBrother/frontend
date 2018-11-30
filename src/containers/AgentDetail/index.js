@@ -12,10 +12,11 @@ import { connect } from 'react-redux';
 import monitor from '../../assets/icons/monitor.png';
 import cancel from '../../assets/icons/cancel.png';
 import check from '../../assets/icons/check.png';
-import { getTimeAndDate, getStringOrBool } from '../../utils';
 import OsIcon from '../../components/OsIcon';
 import { activateDeactivateAgent } from '../../store/actions/content';
 import { types } from '../../constants';
+import AgentDetailResponse from '../../components/AgentDetailResponse';
+import AgentDetailStatus from '../../components/AgentDetailStatus';
 
 
 const styles = {
@@ -109,20 +110,14 @@ class AgentDetail extends Component {
                 <Typography component="p">
                   owner: { this.props.agent.user.username }
                 </Typography>
-                <Typography component="p">
-                  { this.props.agent.last_response_received ?
-                    `latest response: ${ getTimeAndDate(this.props.agent) } (click to show details)` :
-                    'No responses from this agent yet.'
-                  }
-                </Typography>
-                { this.state.expand && this.props.agent.last_response_received ?
-                <ul>
-                  { Object.keys(this.props.agent.latest_response).map(key => (
-                    key === 'id' || key === 'agent' ? null :
-                    <li>{ key } : { getStringOrBool(this.props.agent.latest_response[key]) }</li>
-                  ))}
-                </ul> :
-                null } 
+                <AgentDetailResponse 
+                  agent={this.props.agent}
+                  expand={this.state.expand}
+                />
+                <AgentDetailStatus
+                  agent={this.props.agent}
+                  expand={this.state.expand}
+                />
               </CardContent>
             </CardActionArea>
             <CardActions>
