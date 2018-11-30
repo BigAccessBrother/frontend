@@ -29,3 +29,7 @@
 .AgentItem-not-secure:hover {
     background-color: rgb(209, 31, 31);
 }
+
+.AgentItem-disabled {
+    opacity: 0.3;
+}

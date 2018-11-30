@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import monitor from '../../assets/icons/monitor.png';
 import { connect } from 'react-redux';
-import './style.css';
 import { getAgentDetail } from '../../store/actions/content';
 import OsIcon from '../../components/OsIcon';
 import { getTimeAndDate } from '../../utils';
+import './style.css';
 
 
 class AgentItem extends Component {
@@ -23,7 +22,10 @@ class AgentItem extends Component {
     render() {
         return(
             <div 
-                className={`AgentItem ${this.props.agent.secure ? "AgentItem-secure" : "AgentItem-not-secure"}`}
+                className={
+                    `AgentItem ${this.props.agent.secure ? "AgentItem-secure" : "AgentItem-not-secure"}`
+                    + ` ${this.props.agent.is_active ? null : 'AgentItem-disabled'}`
+                }
                 onClick={this.handleClick}
             >
                 <OsIcon type={ this.props.agent.latest_response.os_type } />

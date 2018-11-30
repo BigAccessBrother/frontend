@@ -3,4 +3,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 20px -5px;
+    width: calc(100% - 400px);
+    float: right;
 }
