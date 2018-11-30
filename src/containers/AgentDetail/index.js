@@ -116,7 +116,7 @@ class AgentDetail extends Component {
                 />
                 <AgentDetailStatus
                   agent={this.props.agent}
-                  expand={this.state.expand}
+                  expand={true}
                 />
               </CardContent>
             </CardActionArea>

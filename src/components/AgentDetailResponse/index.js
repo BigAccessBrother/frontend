@@ -16,7 +16,7 @@ const AgentDetailResponse = (props) => {
                 <ul>
                   { Object.keys(props.agent.latest_response).map(key => (
                     key === 'id' || key === 'agent' ? null :
-                    <li>{ key } : { getStringOrBool(props.agent.latest_response[key]) }</li>
+                    <li>{ key.replace(/_/g, ' ') } : { getStringOrBool(props.agent.latest_response[key]) }</li>
                   ))}
                 </ul> :
                 null } 

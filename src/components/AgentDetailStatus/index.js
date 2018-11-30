@@ -1,25 +1,33 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
+import './style.css';
 
 
 const AgentDetailStatus = (props) => {
     return (
         <div>
-        { props.agent.latest_response.report && props.expand ?
-            <div>
-                <Typography component="p">
-                    status report: { props.agent.latest_response.report.status }
-                </Typography>
-                <ul>
-                    {
-                        Object.keys(props.agent.latest_response.report).map(key => (
-                            <li key={key}>
-                                { key }: { props.agent.latest_response.report[key] }
-                            </li>
-                            )
-                            )
-                        }
-                </ul>
+        { props.agent.latest_response.report ?
+            <div 
+                className={
+                    `AgentDetailStatus-${props.agent.latest_response.report.status === 'ok' ? 
+                    'secure' : 'not-secure'}`
+                }
+            >
+                <h2>
+                    status: { props.agent.latest_response.report.status }
+                </h2>
+                    { props.expand && props.agent.latest_response.report.status !== 'ok' ? 
+                    <ul>
+                        {
+                            Object.keys(props.agent.latest_response.report).map(key => key === 'status' ? null : (
+                                <li key={key}>
+                                    { key.replace(/_/g, ' ') } { props.agent.latest_response.report[key] }
+                                </li>
+                                )
+                                )
+                            }
+                    </ul> : 
+                null }
             </div> :
         null }
         </div>
