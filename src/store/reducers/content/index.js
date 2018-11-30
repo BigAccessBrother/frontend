@@ -38,6 +38,23 @@ export default (state = initialState, action) => {
                 loading: false,
                 agentDetail: action.payload.data,
             }
+        case types.ACTIVATE_DEACTIVATE_AGENT:
+            const newAgents = state.agents.map(
+                agent => agent.id === action.payload.agent.id ?
+                    { ...agent, is_active: !agent.is_active } : 
+                    agent
+                )
+            return {
+                ...state,
+                agents: newAgents,
+                agentDetail: {
+                    ...state.agentDetail,
+                    agent: {
+                        ...state.agentDetail.agent,
+                        is_active: !state.agentDetail.agent.is_active
+                    }
+                }
+            }
         default:
             return state
     }

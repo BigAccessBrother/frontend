@@ -42,3 +42,13 @@ export const getAgentDetail = agent => (dispatch, getState) => {
         console.log(error);
     });
 }
+
+export const activateDeactivateAgent = agent => (dispatch, getState) => {
+    dispatch({
+        type: types.ACTIVATE_DEACTIVATE_AGENT,
+        payload: { agent }
+    })
+    axios.put(`agent/${agent.id}/activate/`, {
+        is_active: !agent.is_active,
+    });
+}

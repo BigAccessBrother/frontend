@@ -14,11 +14,19 @@ import cancel from '../../assets/icons/cancel.png';
 import check from '../../assets/icons/check.png';
 import { getTimeAndDate, getStringOrBool } from '../../utils';
 import OsIcon from '../../components/OsIcon';
+import { activateDeactivateAgent } from '../../store/actions/content';
+import { types } from '../../constants';
 
 
 const styles = {
   card: {
-    margin: '30px auto 0 auto',
+    // margin: '30px auto 0 auto',
+    width: 380,
+    marginTop: 30,
+    float: 'left',
+  },
+  disabled: {
+    opacity: 0.7,
   },
   media: {
     height: 48,
@@ -31,6 +39,9 @@ const styles = {
   container: {
       display: 'flex',
       justifyContent: 'center',
+  },
+  close: {
+    margin: '0 0 0 auto'
   }
 };
 
@@ -39,18 +50,40 @@ class AgentDetail extends Component {
         expand: false
     }
 
-    handleClick = () => {
+    componentWillMount = () => {
+      this.setState({
+        expand: false
+      })
+    }
+
+    expand = () => {
       this.setState({
         expand: !this.state.expand
       })
     }
 
+    activateDeactivate = () => {
+      this.props.dispatch(activateDeactivateAgent(this.props.agent))
+    }
+
+    close = () => {
+      this.props.dispatch({
+        type: types.SET_AGENT_DETAIL,
+        payload: {
+            data: {
+                agent: {},
+                responses: []
+            }
+        }
+      });
+    }
+
     render() {
         const { classes } = this.props;
         return (
-          <Card className={classes.card}>
+          <Card className={[classes.card, this.props.agent.is_active ? null : classes.disabled]}>
             <CardActionArea
-              onClick={ this.handleClick }
+              onClick={ this.expand }
             >
               <div className={classes.container}>
                 <CardMedia
@@ -78,9 +111,12 @@ class AgentDetail extends Component {
                   owner: { this.props.agent.user.username }
                 </Typography>
                 <Typography component="p">
-                  latest response: { getTimeAndDate(this.props.agent) } (click to show details)
+                  { this.props.agent.last_response_received ?
+                    `latest response: ${ getTimeAndDate(this.props.agent) } (click to show details)` :
+                    'No responses from this agent yet.'
+                  }
                 </Typography>
-                { this.state.expand ?
+                { this.state.expand && this.props.agent.last_response_received ?
                 <ul>
                   { Object.keys(this.props.agent.latest_response).map(key => (
                     key === 'id' || key === 'agent' ? null :
@@ -91,8 +127,20 @@ class AgentDetail extends Component {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
-                deactivate agent
+              <Button 
+                size="small" 
+                color="primary"
+                onClick={ this.activateDeactivate }
+              >
+                { this.props.agent.is_active ? 'deactivate' : 'activate'} agent
+              </Button>
+              <Button 
+                className={classes.close}
+                size="small" 
+                color="primary"
+                onClick={ this.close }
+              >
+                close
               </Button>
             </CardActions>
           </Card>

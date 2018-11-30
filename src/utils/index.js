@@ -1,4 +1,7 @@
 export const getTimeAndDate = (agent) => {
+    if (agent.latest_response === 'no responses from this agent') {
+        return 'none'
+    }
     const DateTime = new Date(agent.last_response_received);
     const day = DateTime.getDay();
     const month = DateTime.getMonth() + 1;
