@@ -1,0 +1,40 @@
+
+.card {
+    margin: 50px auto 300px auto;
+    height: 750px;
+    width: 600px;
+  }
+
+  .title {
+    line-height: 2px;
+  }
+  .date {
+    line-height: 3px;
+    font-size: 18px;
+    }
+  .textContent {
+    height: 120px;
+    width: 540px;
+    margin: 20px;
+    font-size: 18px;
+    line-height: 2px;
+  }
+  .list {
+    list-style: 'none';
+  }
+  .listRight {
+    text-align: right;
+  }
+  .textLine {
+   display: flex;
+   justify-content: space-between;
+   line-height: 3px;
+  }
+  /*textLine: hover {*/
+      /*backgroundColor: rgb(39, 155, 39);*/
+      /*},*/
+
+  .oneLine {
+    color: 'primary';
+    line-height: 3px;
+  }
