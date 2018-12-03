@@ -21,6 +21,9 @@ const theme = createMuiTheme({
         secondary: indigo,
         type: 'dark',
     },
+    typography: {
+        useNextVariants: true,
+    },
 })
 
 // default for HTTP requests:
