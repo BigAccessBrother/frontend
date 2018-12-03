@@ -6,10 +6,10 @@
   }
 
   .title {
-    line-height: 2px;
+    line-height: 2;
   }
   .date {
-    line-height: 3px;
+    line-height: 3;
     font-size: 18px;
     }
   .textContent {
@@ -17,24 +17,18 @@
     width: 540px;
     margin: 20px;
     font-size: 18px;
-    line-height: 2px;
+    line-height: 2;
   }
   .list {
     list-style: 'none';
   }
-  .listRight {
-    text-align: right;
-  }
   .textLine {
+    display: block;
    display: flex;
    justify-content: space-between;
-   line-height: 3px;
+   line-height: 2.5;
   }
-  /*textLine: hover {*/
-      /*backgroundColor: rgb(39, 155, 39);*/
-      /*},*/
+  .textLine :hover {
+      color: orange;
+      }
 
-  .oneLine {
-    color: 'primary';
-    line-height: 3px;
-  }
