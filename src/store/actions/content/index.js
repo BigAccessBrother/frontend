@@ -52,3 +52,10 @@ export const activateDeactivateAgent = agent => (dispatch, getState) => {
         is_active: !agent.is_active,
     });
 }
+
+export const add_standard = data => (getState) => {
+    axios.post('standards/',
+         data
+    );
+    console.log(data)
+}

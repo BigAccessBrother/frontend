@@ -4,12 +4,13 @@ import Tab from "@material-ui/core/Tab/Tab";
 import {AppBar} from "@material-ui/core";
 import {getContent} from "../../store/actions/content";
 import connect from "react-redux/es/connect/connect";
+import AddStandards from '../AddStandards';
 import StandardDetail from '../StandardDetail';
 
 
 class SecurityStandards extends Component {
   state = {
-    value: 0,
+    value: 1,
   };
 
   componentWillMount = () => {
@@ -36,9 +37,9 @@ class SecurityStandards extends Component {
                      <Tab label="History" />
                     </Tabs>
                 </AppBar>
-                { this.state.value === 0 &&
+                { this.state.value === 0 && this.props.content.standards &&
                 <AddStandards /> }
-                { this.state.value === 1 &&
+                { this.state.value === 1 && this.props.content.standards &&
                 <  StandardDetail /> }
                 {/*{ this.state.value === 2 &&*/}
                 {/*< History /> }*/}
