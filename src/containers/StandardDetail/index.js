@@ -4,44 +4,7 @@ import Card from "@material-ui/core/Card/Card";
 import React, {Component} from "react";
 import connect from "react-redux/es/connect/connect";
 import {getStringOrBool} from "../../utils";
-import {withStyles} from "@material-ui/core";
-
-
-const styles = {
-  card: {
-    margin: '50px auto 300px auto',
-    height: 750,
-    width: 600,
-  },
-  title: {
-    lineHeight: 2,
-  },
-  date: {
-    lineHeight: 3,
-    fontSize: 18,
-    },
-  textContent: {
-    height: 120,
-    width: 540,
-    margin: 20,
-    fontSize: 18,
-    lineHeight: 2,
-  },
-    list: {
-      listStyle: 'none',
-    },
-    listRight: {
-    textAlign: 'right',
-    },
-    line: {
-     display: 'flex',
-     justifyContent: 'space-between',
-    },
-    oneLine: {
-      color: "primary",
-      lineHeight: "3"
-    },
-};
+import './style.css';
 
 
 export const getTimeAndDate = (standardDate) => {
@@ -64,43 +27,41 @@ class StandardDetail extends Component {
         expand: false
     }
 
-
-
     render() {
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return (
-            <Card className={classes.card}>
-                <CardContent className={classes.textContent}>
-                  <Typography align="center" component="h3" variant="display2" className={classes.title}>
+            <Card className={"card"}>
+                <CardContent className={"textContent"}>
+                  <Typography align="center" component="h3" variant="display2" className={"title"}>
                       Security Standards
                   </Typography>
                   <Typography align="center" variant="display1" color="primary">
                       for { this.props.content.standards[0].os_type }
                   </Typography>
-                  <Typography align="center" className={classes.date}>
+                  <Typography align="center" className={"date"}>
                       applied since { getTimeAndDate(this.props.content.standards[0].date_created) }
                   </Typography>
-                    <Typography className={classes.oneLine} color="primary">
+                    <Typography color="primary">
                         ------------------------------------------
                     </Typography>
-                  <div className={classes.list}>
+                  <div className={"list"}>
                     {bool_standards.map(key => (
-                        <div className={classes.line}>
+                        <div className={"textLine"}>
                             <span>
                             { key.replace(/_/g, ' ') }
                             </span>
-                            <span className={classes.listRight}>
+                            <span>
                             { getStringOrBool(this.props.content.standards[0][key]) }
                             </span>
                         </div>
                         ))}
 
                     {int_standards.map(key => (
-                        <div className={classes.line}>
-                            <span className={classes.listLeft}>
+                        <div className={"textLine"}>
+                            <span>
                             { key.replace(/_/g, ' ') }
                             </span>
-                            <span className={classes.listRight}>
+                            <span>
                             { this.props.content.standards[0][key]} days ago
                             </span>
                         </div>
@@ -112,6 +73,6 @@ class StandardDetail extends Component {
     };
 }
 
-export default withStyles(styles)(connect(
+export default (connect(
     ({ content }) => ({ content })
 )(StandardDetail));
