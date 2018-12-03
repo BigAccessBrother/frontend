@@ -5,15 +5,18 @@ import React, {Component} from "react";
 import connect from "react-redux/es/connect/connect";
 import {getStringOrBool} from "../../utils";
 import './style.css';
+import moment from "moment";
 
 
-export const getTimeAndDate = (standardDate) => {
-    const DateTime = new Date(standardDate);
-    const year = DateTime.getFullYear();
-    const day = DateTime.getDay();
-    const month = DateTime.getMonth() + 1;
-    return `${day}.${month}.${year}`
-}
+// export const getTimeAndDate = (standardDate) => {
+//     const DateTime = new Date(standardDate);
+//     const year = DateTime.getFullYear();
+//     const day = DateTime.getDay();
+//     const month = DateTime.getMonth() + 1;
+//     return `${day}.${month}.${year}`
+// }
+
+
 
 const bool_standards = ['antispyware_enabled', 'antivirus_enabled', 'behavior_monitor_enabled', 'nis_enabled',
     'on_access_protection_enabled', 'real_time_protection_enabled']
@@ -28,7 +31,6 @@ class StandardDetail extends Component {
     }
 
     render() {
-        // const { classes } = this.props;
         return (
             <Card className={"card"}>
                 <CardContent className={"textContent"}>
@@ -39,8 +41,9 @@ class StandardDetail extends Component {
                       for { this.props.content.standards[0].os_type }
                   </Typography>
                   <Typography align="center" className={"date"}>
-                      applied since { getTimeAndDate(this.props.content.standards[0].date_created) }
-                  </Typography>
+                      applied since { moment(this.props.content.standards[0].date_created).format('DD.MM.YYYY') }
+                      {/*applied since { getTimeAndDate(this.props.content.standards[0].date_created) }*/}
+                  </Typography>'
                     <Typography color="primary">
                         ------------------------------------------
                     </Typography>
