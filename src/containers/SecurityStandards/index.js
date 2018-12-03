@@ -36,8 +36,8 @@ class SecurityStandards extends Component {
                      <Tab label="History" />
                     </Tabs>
                 </AppBar>
-                {/*{ this.state.value === 0 &&*/}
-                {/*<AddStandard /> }*/}
+                { this.state.value === 0 &&
+                <AddStandards /> }
                 { this.state.value === 1 &&
                 <  StandardDetail /> }
                 {/*{ this.state.value === 2 &&*/}
