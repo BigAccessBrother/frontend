@@ -9,7 +9,7 @@ const OsIcon = (props) => {
             type = 'fab fa-windows';
         } else if (props.type.toLowerCase().includes('mac')) {
             type = 'fab fa-apple';
-        } else if (props.type.toLowerCase().includes('ubuntu')) {
+        } else if (props.type.toLowerCase().includes('linux')) {
             type = 'fab fa-linux';
         }
     } 
