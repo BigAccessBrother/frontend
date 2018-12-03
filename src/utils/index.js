@@ -1,13 +1,11 @@
+import moment from 'moment';
+
 export const getTimeAndDate = (agent) => {
     if (agent.latest_response === 'no responses from this agent') {
         return 'none'
     }
     const DateTime = new Date(agent.last_response_received);
-    const day = DateTime.getDay();
-    const month = DateTime.getMonth() + 1;
-    const hour = DateTime.getHours();
-    const minutes = DateTime.getMinutes();
-    return `${day}.${month}, ${hour}:${minutes > 9 ? minutes : `0${minutes}`}`
+    return moment(agent.last_response_received).format('DD.MM, hh:mm')
 }
 
 export const getStringOrBool = (val) => {
