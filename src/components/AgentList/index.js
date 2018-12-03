@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 
 const AgentList = (props) => {
-    console.log('agentList', props);
     
     return (
         <div className="AgentList">

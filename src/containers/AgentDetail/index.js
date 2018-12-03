@@ -81,7 +81,9 @@ class AgentDetail extends Component {
     render() {
         const { classes } = this.props;
         return (
-          <Card className={[classes.card, this.props.agent.is_active ? null : classes.disabled]}>
+          <Card 
+            className={ [classes.card, this.props.agent.is_active ? null : classes.disabled]
+                        .join(' ') }>
             <CardActionArea
               onClick={ this.expand }
             >

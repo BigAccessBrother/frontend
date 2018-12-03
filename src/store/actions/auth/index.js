@@ -14,8 +14,8 @@ export const getActiveUser = () => (dispatch, getState) => {
         })
     })
     .catch(error => {
+        console.log('something went wrong')
         console.log(error)
-        alert('something went wrong')
     })
 }
 
@@ -37,21 +37,20 @@ export const login = (username, password) => (dispatch, getState) => {
         dispatch(getActiveUser());
     })
     .catch(error => {
+        console.log('something went wrong')
         console.log(error)
-        alert('something went wrong')
     })
 }
 
 export const checkToken = (store) => {
     
-    // check if there is am active user
+    // check if there is an active user
     if (!store.getState().auth.isLoggedIn) {
 
         // check if there is a token in localstorage
         if (window.localStorage.getItem('BAB-token')) {
             
             // save token to state
-            console.log('getting token from localStorage')
             store.dispatch({
                 type: types.SET_TOKEN,
                 payload: {
@@ -62,8 +61,6 @@ export const checkToken = (store) => {
             // set active user
             store.dispatch(getActiveUser())
 
-        } else {
-            console.log('no token in localStorage');
         }
     }
 }
