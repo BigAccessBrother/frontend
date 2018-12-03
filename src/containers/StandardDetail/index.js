@@ -43,7 +43,7 @@ class StandardDetail extends Component {
                   <Typography align="center" className={"date"}>
                       applied since { moment(this.props.content.standards[0].date_created).format('DD.MM.YYYY') }
                       {/*applied since { getTimeAndDate(this.props.content.standards[0].date_created) }*/}
-                  </Typography>'
+                  </Typography>
                     <Typography color="primary">
                         ------------------------------------------
                     </Typography>
