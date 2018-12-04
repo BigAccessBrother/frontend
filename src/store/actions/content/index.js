@@ -53,9 +53,18 @@ export const activateDeactivateAgent = agent => (dispatch, getState) => {
     });
 }
 
-export const add_standard = data => (getState) => {
+export const add_standard = data => (dispatch, getState) => {
+
+    data.quick_scan_age=parseInt(data.quick_scan_age)
+    data.full_scan_age=parseInt(data.full_scan_age)
+    data.nis_signature_last_updated=parseInt(data.nis_signature_last_updated)
+    data.antivirus_signature_last_updated=parseInt(data.antivirus_signature_last_updated)
+    data.antispyware_signature_last_updated=parseInt(data.antispyware_signature_last_updated)
+
     axios.post('standards/',
          data
-    );
-    console.log(data)
+    ).then(response => {
+        dispatch(getContent('standards', 'standards/'))
+    });
+    console.log(data.quick_scan_age)
 }

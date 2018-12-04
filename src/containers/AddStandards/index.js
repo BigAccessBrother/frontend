@@ -5,25 +5,45 @@ import TextField from '@material-ui/core/TextField';
 import React from "react";
 import {add_standard} from "../../store/actions/content";
 import { withStyles } from '@material-ui/core/styles';
+import FormControl from "@material-ui/core/FormControl/FormControl";
+import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import Select from "@material-ui/core/Select/Select";
+import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    width: 1000,
-    margin: 'auto'
+    justifyContent: 'center',
+    width: '80%',
+    margin: 'auto',
+    marginTop: 60,
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 285,
+    minWidth: 260,
+    width: '30%',
     backgroundColor: "primary"
   },
   button: {
-    marginLeft: 80,
     marginTop: 20,
+    textAlign: 'center',
     borderRadius: '100px',
     height: 50
+  },
+
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 260,
+    width: '30%',
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2,
   },
 });
 
@@ -31,16 +51,16 @@ const styles = theme => ({
 class AddStandards extends Component {
     state = {
           os_type: '',
-          antispyware_enabled: '',
-          antispyware_signature_last_updated: '',
-          antivirus_enabled: '',
-          antivirus_signature_last_updated: '',
-          behavior_monitor_enabled: '',
-          full_scan_age: '',
-          nis_enabled: '',
-          nis_signature_last_updated: '',
-          on_access_protection_enabled: '',
           quick_scan_age: '',
+          full_scan_age: '',
+          nis_signature_last_updated: '',
+          antivirus_signature_last_updated: '',
+          antispyware_signature_last_updated: '',
+          nis_enabled: '',
+          antivirus_enabled: '',
+          antispyware_enabled: '',
+          behavior_monitor_enabled: '',
+          on_access_protection_enabled: '',
           real_time_protection_enabled: '',
     }
 
@@ -69,7 +89,7 @@ class AddStandards extends Component {
         onSubmit={ this.add_standard }
        >
 
-        <TextField
+          <TextField
              name="os_type"
              id="os_type"
              label="OS type"
@@ -81,51 +101,15 @@ class AddStandards extends Component {
               margin="normal"
               variant="outlined"
             />
-         <TextField
-             name="antispyware_enabled"
-             id="antispyware_enabled"
-             label="Antispyware enabled"
+          <TextField
+               name="quick_scan_age"
+               id="quick_scan_age"
+              label="Quick scan age"
               className={classes.textField}
               type="text"
-              placeholder={ String(this.props.content.standards[0].antispyware_enabled) }
-              value={this.state.antispyware_enabled}
-              onChange={this.handleChange('antispyware_enabled')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
-               name="antispyware_signature_last_updated"
-               id="antispyware_signature_last_updated"
-              label="Antispyware signature last updated"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].antispyware_signature_last_updated) }
-              value={this.state.antispyware_signature_last_updated}
-              onChange={this.handleChange('antispyware_signature_last_updated')}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-               name="antivirus_enabled"
-               id="antivirus_enabled"
-              label="Antivirus enabled"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].antivirus_enabled) }
-              value={this.state.antivirus_enabled}
-              onChange={this.handleChange('antivirus_enabled')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
-               name="antivirus_signature_last_updated"
-               id="antivirus_signature_last_updated"
-              label="Antivirus signature last updated"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].antivirus_signature_last_updated) }
-              value={this.state.antivirus_signature_last_updated}
-              onChange={this.handleChange('antivirus_signature_last_updated')}
+              placeholder={ String(this.props.content.standards[0].quick_scan_age) }
+              value={this.state.quick_scan_age}
+              onChange={this.handleChange('quick_scan_age')}
               margin="normal"
               variant="outlined"
             />
@@ -142,30 +126,6 @@ class AddStandards extends Component {
               variant="outlined"
             />
            <TextField
-               name="quick_scan_age"
-               id="quick_scan_age"
-              label="Quick scan age"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].quick_scan_age) }
-              value={this.state.quick_scan_age}
-              onChange={this.handleChange('quick_scan_age')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
-               name="nis_enabled"
-               id="nis_enabled"
-              label="Nis enabled"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].nis_enabled) }
-              value={this.state.nis_enabled}
-              onChange={this.handleChange('nis_enabled')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
                name="nis_signature_last_updated"
                id="nis_signature_last_updated"
               label="Nis signature last updated"
@@ -177,61 +137,106 @@ class AddStandards extends Component {
               margin="normal"
               variant="outlined"
             />
-              <TextField
-               name="behavior_monitor_enabled"
-               id="behavior_monitor_enabled"
-              label="Behavior monitor enabled"
+           <TextField
+               name="antivirus_signature_last_updated"
+               id="antivirus_signature_last_updated"
+              label="Antivirus signature last updated"
               className={classes.textField}
               type="text"
-              placeholder={ String(this.props.content.standards[0].behavior_monitor_enabled) }
-              value={this.state.behavior_monitor_enabled}
-              onChange={this.handleChange('behavior_monitor_enabled')}
+              placeholder={ String(this.props.content.standards[0].antivirus_signature_last_updated) }
+              value={this.state.antivirus_signature_last_updated}
+              onChange={this.handleChange('antivirus_signature_last_updated')}
               margin="normal"
               variant="outlined"
             />
            <TextField
-               name="on_access_protection_enabled"
-               id="on_access_protection_enabled"
-              label="On access protection enabled"
+               name="antispyware_signature_last_updated"
+               id="antispyware_signature_last_updated"
+              label="Antispyware signature last updated"
               className={classes.textField}
               type="text"
-              placeholder={ String(this.props.content.standards[0].on_access_protection_enabled) }
-              value={this.state.on_access_protection_enabled}
-              onChange={this.handleChange('on_access_protection_enabled')}
+              placeholder={ String(this.props.content.standards[0].antispyware_signature_last_updated) }
+              value={this.state.antispyware_signature_last_updated}
+              onChange={this.handleChange('antispyware_signature_last_updated')}
               margin="normal"
               variant="outlined"
             />
-           <TextField
-               name="real_time_protection_enabled"
-               id="real_time_protection_enabled"
-              label="Real time protection enabled"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].real_time_protection_enabled) }
-              value={this.state.real_time_protection_enabled}
-              onChange={this.handleChange('real_time_protection_enabled')}
-              margin="normal"
-              variant="outlined"
-            />
-
-
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="nis_enabled">Nis enabled</InputLabel>
+              <Select
+                value={this.state.nis_enabled}
+                onChange={this.handleChange('nis_enabled')}
+              >
+                <MenuItem value={true}>true</MenuItem>
+                <MenuItem value={false}>false</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="antivirus_enabled">Antivirus enabled</InputLabel>
+              <Select
+                value={this.state.antivirus_enabled}
+                onChange={this.handleChange('antivirus_enabled')}
+              >
+                <MenuItem value={true}>true</MenuItem>
+                <MenuItem value={false}>false</MenuItem>
+              </Select>
+              </FormControl>
+              <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="antispyware_enabled">Antispyware enabled</InputLabel>
+              <Select
+                value={this.state.antispyware_enabled}
+                onChange={this.handleChange('antispyware_enabled')}
+              >
+                <MenuItem value={true}>true</MenuItem>
+                <MenuItem value={false}>false</MenuItem>
+              </Select>
+              </FormControl>
+              <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="behavior_monitor_enabled">Behavior monitor enabled</InputLabel>
+              <Select
+                value={this.state.behavior_monitor_enabled}
+                onChange={this.handleChange('behavior_monitor_enabled')}
+              >
+                <MenuItem value={true}>true</MenuItem>
+                <MenuItem value={false}>false</MenuItem>
+              </Select>
+              </FormControl>
+              <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="on_access_protection_enabled">On-access protection enabled</InputLabel>
+              <Select
+                value={this.state.on_access_protection_enabled}
+                onChange={this.handleChange('on_access_protection_enabled')}
+              >
+                <MenuItem value={true}>true</MenuItem>
+                <MenuItem value={false}>false</MenuItem>
+              </Select>
+              </FormControl>
+              <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="real_time_protection_enabled">Real time protection enabled</InputLabel>
+              <Select
+                value={this.state.real_time_protection_enabled}
+                onChange={this.handleChange('real_time_protection_enabled')}
+              >
+                <MenuItem value={true}>true</MenuItem>
+                <MenuItem value={false}>false</MenuItem>
+              </Select>
+            </FormControl>
           <Button
             type="submit"
             onClick={ this.add_standard }
-            variant="contained"
+            size="big"
             color="primary"
             className={classes.button}
           >
             Apply standards
           </Button>
-
         </form>
       </div>
     )
   }
-
 }
 
 export default withStyles(styles)(connect(
     ({ content }) => ({ content })
 )(AddStandards))
+
