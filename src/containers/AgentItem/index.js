@@ -11,7 +11,7 @@ class AgentItem extends Component {
     getInitials = () => {
         const email = this.props.agent.user.email
         const initials = email.slice(0, email.indexOf('@'))
-        const num = this.props.agent.computer_name.slice(-9,-8)
+        const num = this.props.agent.computer_name.slice(-10,-8)
         return `${initials} ${num}`
     }
 
