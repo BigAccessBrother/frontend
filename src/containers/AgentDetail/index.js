@@ -47,18 +47,18 @@ const styles = {
 
 class AgentDetail extends Component {
     state = {
-        expand: false
+        expand: 0
     }
 
     componentWillMount = () => {
       this.setState({
-        expand: false
+        expand: 0
       })
     }
 
     expand = () => {
       this.setState({
-        expand: !this.state.expand
+        expand: this.state.expand > 1 ? 0 : this.state.expand + 1
       })
     }
 
@@ -113,12 +113,12 @@ class AgentDetail extends Component {
                   owner: { this.props.agent.user.username }
                 </Typography>
                 <AgentDetailResponse 
-                  agent={this.props.agent}
-                  expand={this.state.expand}
+                  agent={ this.props.agent }
+                  expand={ this.state.expand }
                 />
                 <AgentDetailStatus
-                  agent={this.props.agent}
-                  expand={true}
+                  agent={ this.props.agent }
+                  expand={ true }
                 />
               </CardContent>
             </CardActionArea>
