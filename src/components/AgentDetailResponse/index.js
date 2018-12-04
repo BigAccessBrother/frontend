@@ -1,11 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { getTimeAndDate, getStringOrBool } from '../../utils';
-<<<<<<< HEAD
 // import AgentDetailApps from '../AgentDetailApps';
-=======
-import AgentDetailApps from '../AgentDetailApps';
->>>>>>> 2e381465422222ab642ce86a7bacdcc29c150212
 
 
 const AgentDetailResponse = (props) => {
@@ -26,7 +22,6 @@ const AgentDetailResponse = (props) => {
                   {/* <AgentDetailApps
                     expand={ props.expand }
                     apps={ props.agent.latest_response.startup_apps }
-<<<<<<< HEAD
                   >
                     startup apps
                   </AgentDetailApps>
@@ -36,9 +31,6 @@ const AgentDetailResponse = (props) => {
                   >
                     installed apps
                   </AgentDetailApps> */}
-=======
-                  /> */}
->>>>>>> 2e381465422222ab642ce86a7bacdcc29c150212
                 </ul> :
                 null } 
         </div>
