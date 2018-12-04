@@ -31,16 +31,16 @@ const styles = theme => ({
 class AddStandards extends Component {
     state = {
           os_type: '',
-          antispyware_enabled: '',
-          antispyware_signature_last_updated: '',
-          antivirus_enabled: '',
-          antivirus_signature_last_updated: '',
-          behavior_monitor_enabled: '',
-          full_scan_age: '',
-          nis_enabled: '',
-          nis_signature_last_updated: '',
-          on_access_protection_enabled: '',
           quick_scan_age: '',
+          full_scan_age: '',
+          nis_signature_last_updated: '',
+          antivirus_signature_last_updated: '',
+          antispyware_signature_last_updated: '',
+          nis_enabled: '',
+          antivirus_enabled: '',
+          antispyware_enabled: '',
+          behavior_monitor_enabled: '',
+          on_access_protection_enabled: '',
           real_time_protection_enabled: '',
     }
 
@@ -81,51 +81,15 @@ class AddStandards extends Component {
               margin="normal"
               variant="outlined"
             />
-         <TextField
-             name="antispyware_enabled"
-             id="antispyware_enabled"
-             label="Antispyware enabled"
+          <TextField
+               name="quick_scan_age"
+               id="quick_scan_age"
+              label="Quick scan age"
               className={classes.textField}
               type="text"
-              placeholder={ String(this.props.content.standards[0].antispyware_enabled) }
-              value={this.state.antispyware_enabled}
-              onChange={this.handleChange('antispyware_enabled')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
-               name="antispyware_signature_last_updated"
-               id="antispyware_signature_last_updated"
-              label="Antispyware signature last updated"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].antispyware_signature_last_updated) }
-              value={this.state.antispyware_signature_last_updated}
-              onChange={this.handleChange('antispyware_signature_last_updated')}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-               name="antivirus_enabled"
-               id="antivirus_enabled"
-              label="Antivirus enabled"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].antivirus_enabled) }
-              value={this.state.antivirus_enabled}
-              onChange={this.handleChange('antivirus_enabled')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
-               name="antivirus_signature_last_updated"
-               id="antivirus_signature_last_updated"
-              label="Antivirus signature last updated"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].antivirus_signature_last_updated) }
-              value={this.state.antivirus_signature_last_updated}
-              onChange={this.handleChange('antivirus_signature_last_updated')}
+              placeholder={ String(this.props.content.standards[0].quick_scan_age) }
+              value={this.state.quick_scan_age}
+              onChange={this.handleChange('quick_scan_age')}
               margin="normal"
               variant="outlined"
             />
@@ -142,14 +106,38 @@ class AddStandards extends Component {
               variant="outlined"
             />
            <TextField
-               name="quick_scan_age"
-               id="quick_scan_age"
-              label="Quick scan age"
+               name="nis_signature_last_updated"
+               id="nis_signature_last_updated"
+              label="Nis signature last updated"
               className={classes.textField}
               type="text"
-              placeholder={ String(this.props.content.standards[0].quick_scan_age) }
-              value={this.state.quick_scan_age}
-              onChange={this.handleChange('quick_scan_age')}
+              placeholder={ String(this.props.content.standards[0].nis_signature_last_updated) }
+              value={this.state.nis_signature_last_updated}
+              onChange={this.handleChange('nis_signature_last_updated')}
+              margin="normal"
+              variant="outlined"
+            />
+           <TextField
+               name="antivirus_signature_last_updated"
+               id="antivirus_signature_last_updated"
+              label="Antivirus signature last updated"
+              className={classes.textField}
+              type="text"
+              placeholder={ String(this.props.content.standards[0].antivirus_signature_last_updated) }
+              value={this.state.antivirus_signature_last_updated}
+              onChange={this.handleChange('antivirus_signature_last_updated')}
+              margin="normal"
+              variant="outlined"
+            />
+           <TextField
+               name="antispyware_signature_last_updated"
+               id="antispyware_signature_last_updated"
+              label="Antispyware signature last updated"
+              className={classes.textField}
+              type="text"
+              placeholder={ String(this.props.content.standards[0].antispyware_signature_last_updated) }
+              value={this.state.antispyware_signature_last_updated}
+              onChange={this.handleChange('antispyware_signature_last_updated')}
               margin="normal"
               variant="outlined"
             />
@@ -166,14 +154,26 @@ class AddStandards extends Component {
               variant="outlined"
             />
            <TextField
-               name="nis_signature_last_updated"
-               id="nis_signature_last_updated"
-              label="Nis signature last updated"
+               name="antivirus_enabled"
+               id="antivirus_enabled"
+              label="Antivirus enabled"
               className={classes.textField}
               type="text"
-              placeholder={ String(this.props.content.standards[0].nis_signature_last_updated) }
-              value={this.state.nis_signature_last_updated}
-              onChange={this.handleChange('nis_signature_last_updated')}
+              placeholder={ String(this.props.content.standards[0].antivirus_enabled) }
+              value={this.state.antivirus_enabled}
+              onChange={this.handleChange('antivirus_enabled')}
+              margin="normal"
+              variant="outlined"
+            />
+         <TextField
+             name="antispyware_enabled"
+             id="antispyware_enabled"
+             label="Antispyware enabled"
+              className={classes.textField}
+              type="text"
+              placeholder={ String(this.props.content.standards[0].antispyware_enabled) }
+              value={this.state.antispyware_enabled}
+              onChange={this.handleChange('antispyware_enabled')}
               margin="normal"
               variant="outlined"
             />
@@ -213,8 +213,6 @@ class AddStandards extends Component {
               margin="normal"
               variant="outlined"
             />
-
-
           <Button
             type="submit"
             onClick={ this.add_standard }
