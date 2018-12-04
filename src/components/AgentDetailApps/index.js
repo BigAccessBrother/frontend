@@ -4,13 +4,15 @@ const AgentDetailApps = props => {
     return (
         <li>
             { props.expand === 1 ?
-                <div>startup apps: {props.apps.length} (click again to expand)</div> : 
-                <ul>
-                    startup apps: (hover for detail)
-                    {
-                        props.apps.map(app => <li>{app.name}</li>)
-                    }
-                </ul>
+                <div>{ props.children }: {props.apps.length} (click again to expand)</div> : 
+                <div>
+                    { props.children }: (hover for detail)
+                    <ul>
+                        {
+                            props.apps.map(app => <li key={app.name}>{app.name}</li>)
+                        }
+                    </ul>
+                </div>
             }
         </li>
     )
