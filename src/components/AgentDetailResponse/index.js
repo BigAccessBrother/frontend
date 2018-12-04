@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { getTimeAndDate, getStringOrBool } from '../../utils';
+import AgentDetailApps from '../AgentDetailApps';
 
 
 const AgentDetailResponse = (props) => {
@@ -18,6 +19,10 @@ const AgentDetailResponse = (props) => {
                     key === 'id' || key === 'agent' ? null :
                     <li>{ key.replace(/_/g, ' ') } : { getStringOrBool(props.agent.latest_response[key]) }</li>
                   ))}
+                  {/* <AgentDetailApps
+                    expand={ props.expand }
+                    apps={ props.agent.latest_response.startup_apps }
+                  /> */}
                 </ul> :
                 null } 
         </div>
