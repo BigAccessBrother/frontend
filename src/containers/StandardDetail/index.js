@@ -1,21 +1,22 @@
-import CardContent from "@material-ui/core/CardContent/CardContent";
 import Typography from "@material-ui/core/Typography/Typography";
-import Card from "@material-ui/core/Card/Card";
 import React, {Component} from "react";
 import connect from "react-redux/es/connect/connect";
 import {getStringOrBool} from "../../utils";
-import './style.css';
 import moment from "moment";
+import Table from "@material-ui/core/Table/Table";
+import TableBody from "@material-ui/core/TableBody/TableBody";
+import TableCell from "@material-ui/core/TableCell/TableCell";
+import TableRow from "@material-ui/core/TableRow/TableRow";
+import {withStyles} from "@material-ui/core";
 
-
-// export const getTimeAndDate = (standardDate) => {
-//     const DateTime = new Date(standardDate);
-//     const year = DateTime.getFullYear();
-//     const day = DateTime.getDay();
-//     const month = DateTime.getMonth() + 1;
-//     return `${day}.${month}.${year}`
-// }
-
+const styles = {
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+}
 
 
 const bool_standards = ['antispyware_enabled', 'antivirus_enabled', 'behavior_monitor_enabled', 'nis_enabled',
@@ -31,51 +32,58 @@ class StandardDetail extends Component {
     }
 
     render() {
+        const {classes} = this.props;
         return (
-            <Card className={"card"}>
-                <CardContent className={"textContent"}>
-                  <Typography align="center" component="h3" variant="display2" className={"title"}>
-                      Security Standards
-                  </Typography>
-                  <Typography align="center" variant="display1" color="primary">
-                      for { this.props.content.standards[0].os_type }
-                  </Typography>
-                  <Typography align="center" className={"date"}>
-                      applied since { moment(this.props.content.standards[0].date_created).format('DD.MM.YYYY') }
-                      {/*applied since { getTimeAndDate(this.props.content.standards[0].date_created) }*/}
-                  </Typography>
-                    <Typography color="primary">
-                        ------------------------------------------
-                    </Typography>
-                  <div className={"list"}>
-                    {bool_standards.map(key => (
-                        <div className={"textLine"}>
-                            <span>
-                            { key.replace(/_/g, ' ') }
-                            </span>
-                            <span>
-                            { getStringOrBool(this.props.content.standards[0][key]) }
-                            </span>
-                        </div>
-                        ))}
+            <div className={classes.container}>
+                <Typography component="h3" variant="display2" style={{alignItems: 'center'}}>
+                    Security Standards
+                </Typography>
+                <Typography variant="display1" color="primary">
+                    for {this.props.content.standards[0].os_type}
+                </Typography>
+                <Typography>
+                    applied since {moment(this.props.content.standards[0].date_created).format('DD.MM.YYYY')}
+                </Typography>
+                <Typography color="primary">
+                    ------------------------------------------
+                </Typography>
 
-                    {int_standards.map(key => (
-                        <div className={"textLine"}>
-                            <span>
-                            { key.replace(/_/g, ' ') }
-                            </span>
-                            <span>
-                            { this.props.content.standards[0][key]} days ago
-                            </span>
-                        </div>
-                    ))}
-                  </div>
-                </CardContent>
-            </Card>
+                <div>
+                    <Table>
+                        <TableBody>
+                            {bool_standards.map(standard => {
+                                return (
+                                    <TableRow key={standard}>
+                                        <TableCell component="th" scope="row">
+                                            {standard.replace(/_/g, ' ')}
+                                        </TableCell>
+                                        <TableCell>
+                                            {getStringOrBool(this.props.content.standards[0][standard])}
+                                        </TableCell>
+                                    </TableRow>
+                                );
+                            })}
+                            {int_standards.map(standard => {
+                                return (
+                                    <TableRow key={standard}>
+                                        <TableCell component="th" scope="row">
+                                            {standard}
+                                        </TableCell>
+                                        <TableCell>
+                                            {getStringOrBool(this.props.content.standards[0][standard])} days ago
+                                        </TableCell>
+                                    </TableRow>
+                                );
+                            })}
+                        </TableBody>
+                    </Table>
+                </div>
+            </div>
         );
     };
-}
+};
 
-export default (connect(
-    ({ content }) => ({ content })
+
+export default withStyles(styles)(connect(
+    ({content}) => ({content})
 )(StandardDetail));
