@@ -11,11 +11,26 @@ import {withStyles} from "@material-ui/core";
 
 const styles = {
     container: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        textAlign: 'center',
+        maxWidth: 520,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+    },
+    title: {
+        marginTop: 60,
         alignContent: 'center',
     },
+    table: {
+       marginTop: 20,
+
+    },
+    tableContent: {
+        fontSize: 16,
+    },
+    date: {
+        marginTop: 20,
+    }
+
 }
 
 
@@ -35,29 +50,29 @@ class StandardDetail extends Component {
         const {classes} = this.props;
         return (
             <div className={classes.container}>
-                <Typography component="h3" variant="display2" style={{alignItems: 'center'}}>
+                <Typography component="h1" variant="display2" className={classes.title} >
                     Security Standards
                 </Typography>
                 <Typography variant="display1" color="primary">
                     for {this.props.content.standards[0].os_type}
                 </Typography>
-                <Typography>
+                <Typography className={classes.date}>
                     applied since {moment(this.props.content.standards[0].date_created).format('DD.MM.YYYY')}
                 </Typography>
                 <Typography color="primary">
                     ------------------------------------------
                 </Typography>
 
-                <div>
+                <div className={classes.table}>
                     <Table>
-                        <TableBody>
+                        <TableBody className={classes.tableContent}>
                             {bool_standards.map(standard => {
                                 return (
                                     <TableRow key={standard}>
-                                        <TableCell component="th" scope="row">
+                                        <TableCell component="th" scope="row" className={classes.tableContent}>
                                             {standard.replace(/_/g, ' ')}
                                         </TableCell>
-                                        <TableCell>
+                                        <TableCell className={classes.tableContent}>
                                             {getStringOrBool(this.props.content.standards[0][standard])}
                                         </TableCell>
                                     </TableRow>
@@ -66,10 +81,10 @@ class StandardDetail extends Component {
                             {int_standards.map(standard => {
                                 return (
                                     <TableRow key={standard}>
-                                        <TableCell component="th" scope="row">
+                                        <TableCell className={classes.tableContent} component="th" scope="row">
                                             {standard}
                                         </TableCell>
-                                        <TableCell>
+                                        <TableCell className={classes.tableContent}>
                                             {getStringOrBool(this.props.content.standards[0][standard])} days ago
                                         </TableCell>
                                     </TableRow>
