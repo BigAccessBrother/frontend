@@ -49,40 +49,39 @@ const styles = theme => ({
 
 
 class CreateUser extends Component {
-    state = {
-          email: '',
-          password: '',
-          is_staff: '',
-    }
+  state = {
+        email: '',
+        password: '',
+        is_staff: '',
+  }
 
 
 
-    handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
+  handleChange = name => event => {
+  this.setState({
+    [name]: event.target.value,
+  });
   };
 
-    create_user = (e) => {
+  create_user = (e) => {
     e.preventDefault();
-    this.props.dispatch(create_user(this.state))
+    this.props.dispatch(create_user(this.state, this.props.getBack))
+  }
 
-    }
-
-render(){
+  render(){
     const { classes } = this.props;
     return (
       <div>
 
-       <form
+      <form
         className={classes.container}
         noValidate autoComplete="off"
         onSubmit={ this.add_standard }
-       >
+      >
           <TextField
-             name="email"
-             id="email"
-             label="Email"
+            name="email"
+            id="email"
+            label="Email"
               className={classes.textField}
               type="text"
               value={this.state.email}
@@ -90,10 +89,10 @@ render(){
               margin="normal"
               variant="outlined"
             />
-           <TextField
-             name="password"
-             id="password"
-             label="Password"
+          <TextField
+            name="password"
+            id="password"
+            label="Password"
               className={classes.textField}
               type="text"
               value={this.state.password}
