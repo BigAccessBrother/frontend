@@ -43,6 +43,13 @@ export const getAgentDetail = agent => (dispatch, getState) => {
     });
 }
 
+export const getUserDetail = user => (dispatch, getState) => {
+    dispatch({
+        type: types.SET_USER_DETAIL,
+        payload: { user }
+    })
+}
+
 export const activateDeactivateAgent = agent => (dispatch, getState) => {
     dispatch({
         type: types.ACTIVATE_DEACTIVATE_AGENT,

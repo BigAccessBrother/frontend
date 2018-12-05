@@ -1,4 +1,10 @@
-.UserList {
+.UserList-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: left;
+    margin: 20px -5px;
+}
+
+.UserList-with-detail {
+    width: calc(100% - 270px);
 }
