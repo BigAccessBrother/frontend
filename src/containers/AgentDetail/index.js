@@ -58,7 +58,7 @@ class AgentDetail extends Component {
 
     expand = () => {
       this.setState({
-        expand: this.state.expand > 1 ? 0 : this.state.expand + 1
+        expand: this.state.expand > 0 ? 0 : this.state.expand + 1
       })
     }
 
