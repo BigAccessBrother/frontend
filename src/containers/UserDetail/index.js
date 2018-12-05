@@ -1,7 +1,6 @@
 import React,{ Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -9,11 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import userIcon from  '../../assets/icons/account.png';
 import { types } from '../../constants';
+// import CardActionArea from '@material-ui/core/CardActionArea';
 
 
 const styles = {
   card: {
-    width: 380,
+    width: 280,
     margin: '10px 5px',
     float: 'right',
   },
@@ -59,9 +59,9 @@ class UserDetail extends Component {
         return (
             <Card 
             className={ classes.card }>
-            <CardActionArea
+            {/* <CardActionArea
               onClick={ this.expand }
-            >
+            > */}
               <div className={classes.iconContainer}>
                 <img src={ userIcon } alt="user" />
               </div>
@@ -76,7 +76,7 @@ class UserDetail extends Component {
                   Registered machines: { this.state.agents.length } 
                 </Typography>
               </CardContent>
-            </CardActionArea>
+            {/* </CardActionArea> */}
             <CardActions>
               <Button 
                 className={classes.close}

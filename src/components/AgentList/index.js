@@ -1,9 +1,9 @@
 import React from 'react';
 import AgentItem from '../../containers/AgentItem';
 import AgentFilters from '../../containers/AgentFilters';
-import './style.css';
 import AgentDetail from '../../containers/AgentDetail';
 import { connect } from 'react-redux';
+import './style.css';
 
 
 const AgentList = (props) => {
