@@ -8,6 +8,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SecurityStandards from "../SecurityStandards";
+import Users from "../Users";
 
 
 class Admin extends Component {
@@ -47,7 +48,7 @@ class Admin extends Component {
                     { this.state.value === 1 && 
                         < SecurityStandards /> }
                     { this.state.value === 2 && 
-                        <div >Users go here</div> }
+                        < Users /> }
                 </MainFrame>
             </div>
         )
