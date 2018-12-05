@@ -19,12 +19,12 @@ const styles = theme => ({
     margin: 'auto',
     marginTop: 60,
   },
-  osTypeField: {
+  monitorField: {
     width: '100%',
     marginLeft: '14%',
     marginBottom: '5%',
   },
-  monitorField: {
+  osTypeField: {
     width: '57%',
   },
   textField: {
@@ -36,7 +36,7 @@ const styles = theme => ({
   },
 
   button: {
-    marginTop: 20,
+    marginBottom: 30,
     textAlign: 'center',
     borderRadius: '100px',
     height: 50
@@ -83,7 +83,7 @@ class AddStandards extends Component {
 
     add_standard = (e) => {
     e.preventDefault();
-    this.props.dispatch(add_standard(this.state))
+    this.props.dispatch(add_standard(this.state, this.props.getBack))
 
     }
 
@@ -111,6 +111,15 @@ class AddStandards extends Component {
                   </Select>
             </FormControl>
        </div>
+       <Button
+            type="submit"
+            onClick={ this.add_standard }
+            size="big"
+            color="primary"
+            className={classes.button}
+          >
+            Apply standards
+          </Button>
 
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="antivirus_enabled">Antivirus</InputLabel>
@@ -234,15 +243,6 @@ class AddStandards extends Component {
               </Select>
               </FormControl>
            </div>
-          <Button
-            type="submit"
-            onClick={ this.add_standard }
-            size="big"
-            color="primary"
-            className={classes.button}
-          >
-            Apply standards
-          </Button>
         </form>
       </div>
     )

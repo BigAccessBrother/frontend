@@ -21,6 +21,12 @@ class SecurityStandards extends Component {
     this.setState({ value });
   };
 
+  getBackToCurrentStandard = () => {
+    this.setState({
+        value: 1
+    });
+};
+
     render() {
         return (
             <div>
@@ -38,7 +44,7 @@ class SecurityStandards extends Component {
                     </Tabs>
                 </AppBar>
                 { this.state.value === 0 && this.props.content.standards &&
-                <AddStandards /> }
+                <  AddStandards getBack={this.getBackToCurrentStandard} /> }
                 { this.state.value === 1 && this.props.content.standards &&
                 <  StandardDetail /> }
                 {/*{ this.state.value === 2 &&*/}
