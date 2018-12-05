@@ -39,57 +39,53 @@ const styles = {
 };
 
 class UserDetail extends Component {
-    state = {
-        name: this.props.user.email.split('@')[0],
-        email: this.props.user.email,
-        agents: this.props.content.agents.filter(
-                agent => agent.user.id === this.props.user.id
-            )
-    }
+  getAgents = () => this.props.content.agents.filter(
+    agent => agent.user.id === this.props.user.id
+  )
 
-    close = () => {
-      this.props.dispatch({
-        type: types.SET_USER_DETAIL,
-        payload: { user: {} }
-      });
-    }
+  close = () => {
+    this.props.dispatch({
+      type: types.SET_USER_DETAIL,
+      payload: { user: {} }
+    });
+  }
 
-    render() {
-        const { classes } = this.props;
-        return (
-            <Card 
-            className={ classes.card }>
-            {/* <CardActionArea
-              onClick={ this.expand }
-            > */}
-              <div className={classes.iconContainer}>
-                <img src={ userIcon } alt="user" />
-              </div>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  { this.state.name }
-                </Typography>
-                <Typography component="p">
-                  { this.state.email }
-                </Typography>
-                <Typography component="p">
-                  Registered machines: { this.state.agents.length } 
-                </Typography>
-              </CardContent>
-            {/* </CardActionArea> */}
-            <CardActions>
-              <Button 
-                className={classes.close}
-                size="small" 
-                color="primary"
-                onClick={ this.close }
-              >
-                close
-              </Button>
-            </CardActions>
-          </Card>
-        );
-    }
+  render() {
+      const { classes } = this.props;
+      return (
+          <Card 
+          className={ classes.card }>
+          {/* <CardActionArea
+            onClick={ this.expand }
+          > */}
+            <div className={classes.iconContainer}>
+              <img src={ userIcon } alt="user" />
+            </div>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                { this.props.user.email.split('@')[0] }
+              </Typography>
+              <Typography component="p">
+                { this.props.user.email }
+              </Typography>
+              <Typography component="p">
+                Registered machines: { this.getAgents().length } 
+              </Typography>
+            </CardContent>
+          {/* </CardActionArea> */}
+          <CardActions>
+            <Button 
+              className={classes.close}
+              size="small" 
+              color="primary"
+              onClick={ this.close }
+            >
+              close
+            </Button>
+          </CardActions>
+        </Card>
+      );
+  }
 }
 
 export default withStyles(styles)(connect(
