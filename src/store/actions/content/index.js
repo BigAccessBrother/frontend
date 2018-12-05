@@ -68,10 +68,10 @@ export const add_standard = data => (dispatch, getState) => {
     });
 }
 
-export const create_user = data => (dispatch, getState) => {
-    axios.post('users/',
-        data
-    ).then(response => {
-        dispatch(getContent('users', 'users/'))
+export const create_user = (data, getBack) => (dispatch, getState) => {
+    axios.post('users/', data)
+    .then(response => {
+        dispatch(getContent('users', 'users/'));
+        getBack();
     });
 }
