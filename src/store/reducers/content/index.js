@@ -28,10 +28,6 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 agentFilter: action.payload.filter,
-                // agentDetail: {
-                //     agent: {},
-                //     responses: []
-                // }
             }
         case types.SET_AGENT_DETAIL:
             return {
@@ -40,10 +36,6 @@ export default (state = initialState, action) => {
                 agentDetail: action.payload.data,
             }
         case types.SET_USER_DETAIL:
-            // return Object.assign({}, state, {
-            //     loading: false,
-            //     userDetail: { ...action.payload.user }
-            // })
             return {
                 ...state,
                 loading: false,
