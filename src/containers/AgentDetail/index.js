@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -143,9 +142,5 @@ class AgentDetail extends Component {
         );
     }
 }
-
-AgentDetail.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(connect()(AgentDetail));

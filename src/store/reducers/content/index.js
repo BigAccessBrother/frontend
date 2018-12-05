@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                userDetail: action.payload.user
+                userDetail: { ...action.payload.user }
             }
         case types.ACTIVATE_DEACTIVATE_AGENT:
             const newAgents = state.agents.map(
