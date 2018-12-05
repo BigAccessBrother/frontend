@@ -7,7 +7,8 @@ const initialState = {
     agentDetail: {
         agent: {},
         responses: []
-    }
+    },
+    userDetail: {}
 }
 
 export default (state = initialState, action) => {
@@ -37,6 +38,12 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: false,
                 agentDetail: action.payload.data,
+            }
+        case types.SET_USER_DETAIL:
+            return {
+                ...state,
+                loading: false,
+                userDetail: action.payload.user
             }
         case types.ACTIVATE_DEACTIVATE_AGENT:
             const newAgents = state.agents.map(
