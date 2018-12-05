@@ -71,7 +71,7 @@ class UserDetail extends Component {
               <Typography component="p">
                 { this.getAgents().length ? 
                  <div>
-                  Registered machines: { this.getAgents().length }
+                  Registered agents: { this.getAgents().length }
                   <ul>
                     {
                       this.getAgents().map(agent => <li>
@@ -85,7 +85,7 @@ class UserDetail extends Component {
                     } 
                   </ul>
                  </div> :
-                'No regitered machines' } 
+                'No regitered agents' } 
               </Typography>
             </CardContent>
           {/* </CardActionArea> */}
