@@ -76,9 +76,7 @@ class StandardDetail extends Component {
                                             {standard[1]}
                                         </TableCell>
                                         <TableCell className={classes.tableContent}>
-
-                                            {getStringOrBool(this.props.content.standards[0][standard[0]])}
-
+                                            {this.props.content.standards[0][standard[0]] ? "enabled" : "disabled"}
                                         </TableCell>
                                     </TableRow>
                                 );
