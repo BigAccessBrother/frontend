@@ -34,11 +34,14 @@ const styles = {
 }
 
 
-const bool_standards = ['antispyware_enabled', 'antivirus_enabled', 'behavior_monitor_enabled', 'nis_enabled',
-    'on_access_protection_enabled', 'real_time_protection_enabled']
+const bool_standards = [ ['antivirus_enabled', 'Antivirus'],['antispyware_enabled', 'Antispyware'],
+    ['behavior_monitor_enabled','Behavior Monitor'], ['nis_enabled', 'Network Information Service'],
+    ['on_access_protection_enabled', 'On-Access Protection'], ['real_time_protection_enabled', 'Real-Time Protection'] ]
 
-const int_standards = ['full_scan_age', 'quick_scan_age', 'antispyware_signature_last_updated',
-    'antivirus_signature_last_updated', 'nis_signature_last_updated']
+const int_standards = [ ['full_scan_age', 'Full-Scan Age'], ['quick_scan_age', 'Quick-Scan Age'],
+    ['antispyware_signature_last_updated', 'Antispyware Signature last Update'],
+    ['antivirus_signature_last_updated', 'Antivirus Signature last Update'],
+    ['nis_signature_last_updated', 'NIS Signature last Update'] ]
 
 
 class StandardDetail extends Component {
@@ -70,10 +73,10 @@ class StandardDetail extends Component {
                                 return (
                                     <TableRow key={standard}>
                                         <TableCell component="th" scope="row" className={classes.tableContent}>
-                                            {standard.replace(/_/g, ' ')}
+                                            {standard[1]}
                                         </TableCell>
                                         <TableCell className={classes.tableContent}>
-                                            {getStringOrBool(this.props.content.standards[0][standard])}
+                                            {this.props.content.standards[0][standard[0]] ? "enabled" : "disabled"}
                                         </TableCell>
                                     </TableRow>
                                 );
@@ -82,10 +85,10 @@ class StandardDetail extends Component {
                                 return (
                                     <TableRow key={standard}>
                                         <TableCell className={classes.tableContent} component="th" scope="row">
-                                            {standard}
+                                            {standard[1]}
                                         </TableCell>
                                         <TableCell className={classes.tableContent}>
-                                            {getStringOrBool(this.props.content.standards[0][standard])} days ago
+                                            max {getStringOrBool(this.props.content.standards[0][standard[0]])} days ago
                                         </TableCell>
                                     </TableRow>
                                 );
