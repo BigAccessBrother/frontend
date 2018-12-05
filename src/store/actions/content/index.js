@@ -66,5 +66,12 @@ export const add_standard = data => (dispatch, getState) => {
     ).then(response => {
         dispatch(getContent('standards', 'standards/'))
     });
-    console.log(data.quick_scan_age)
+}
+
+export const create_user = data => (dispatch, getState) => {
+    axios.post('users/',
+        data
+    ).then(response => {
+        dispatch(getContent('users', 'users/'))
+    });
 }
