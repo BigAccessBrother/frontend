@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {add_standard, create_user} from "../../store/actions/content";
+import {create_user} from "../../store/actions/content";
 import React from "react";
 import TextField from "@material-ui/core/TextField/TextField";
 import FormControl from "@material-ui/core/FormControl/FormControl";
