@@ -33,7 +33,7 @@ const styles = {
     margin: '20px',
   },
   icon: {
-    marginTop: '22px',
+    marginTop: '24px',
   },
   container: {
       display: 'flex',

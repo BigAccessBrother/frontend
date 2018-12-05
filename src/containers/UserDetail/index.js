@@ -13,7 +13,7 @@ import { types } from '../../constants';
 
 const styles = {
   card: {
-    width: 280,
+    width: 250,
     margin: '10px 5px',
     float: 'right',
   },
@@ -26,7 +26,7 @@ const styles = {
     margin: '20px',
   },
   icon: {
-    marginTop: '22px',
+    marginTop: '24px',
   },
   iconContainer: {
       display: 'flex',
@@ -69,7 +69,23 @@ class UserDetail extends Component {
                 { this.props.user.email }
               </Typography>
               <Typography component="p">
-                Registered machines: { this.getAgents().length } 
+                { this.getAgents().length ? 
+                 <div>
+                  Registered machines: { this.getAgents().length }
+                  <ul>
+                    {
+                      this.getAgents().map(agent => <li>
+                        <div>
+                          { agent.computer_name }
+                        </div> { agent.secure ? 
+                          <div className="AgentDetailStatus-secure">secure</div> : 
+                          <div className="AgentDetailStatus-not-secure">not secure</div> }
+                      </li>)
+
+                    } 
+                  </ul>
+                 </div> :
+                'No regitered machines' } 
               </Typography>
             </CardContent>
           {/* </CardActionArea> */}
