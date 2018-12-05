@@ -51,7 +51,7 @@ class StandardDetail extends Component {
         return (
             <div className={classes.container}>
                 <Typography component="h1" variant="display2" className={classes.title} >
-                    Security Standards
+                    Security Standard
                 </Typography>
                 <Typography variant="display1" color="primary">
                     for {this.props.content.standards[0].os_type}
