@@ -32,7 +32,7 @@ class SecurityStandards extends Component {
                       textColor="primary"
                       fullWidth
                     >
-                     <Tab label="Add Standard" />
+                     <Tab label="New" />
                      <Tab label="Current" />
                      <Tab label="History" />
                     </Tabs>

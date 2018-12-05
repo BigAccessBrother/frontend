@@ -19,13 +19,22 @@ const styles = theme => ({
     margin: 'auto',
     marginTop: 60,
   },
+  osTypeField: {
+    width: '100%',
+    marginLeft: '14%',
+    marginBottom: '5%',
+  },
+  monitorField: {
+    width: '57%',
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     minWidth: 260,
-    width: '30%',
+    width: '40%',
     backgroundColor: "primary"
   },
+
   button: {
     marginTop: 20,
     textAlign: 'center',
@@ -88,59 +97,35 @@ class AddStandards extends Component {
         noValidate autoComplete="off"
         onSubmit={ this.add_standard }
        >
+       <div className={classes.osTypeField}>
+           <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="os_type">OS-type</InputLabel>
+                  <Select
+                    value={this.state.os_type}
+                    onChange={this.handleChange('os_type')}
+                  >
+                    <MenuItem value={'Microsoft Windows 10 Pro'}>Microsoft Windows 10 Pro</MenuItem>
+                    <MenuItem value={'Microsoft Windows 10 Home'}>Microsoft Windows 10 Home</MenuItem>
+                    <MenuItem value={'Microsoft Windows 10 Education'}>Microsoft Windows 10 Education</MenuItem>
+                    <MenuItem value={'Microsoft Windows 10 Enterprise'}>Microsoft Windows 10 Enterprise</MenuItem>
+                  </Select>
+            </FormControl>
+       </div>
 
-          <TextField
-             name="os_type"
-             id="os_type"
-             label="OS type"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].os_type) }
-              value={this.state.os_type}
-              onChange={this.handleChange('os_type')}
-              margin="normal"
-              variant="outlined"
-            />
-          <TextField
-               name="quick_scan_age"
-               id="quick_scan_age"
-              label="Quick scan age"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].quick_scan_age) }
-              value={this.state.quick_scan_age}
-              onChange={this.handleChange('quick_scan_age')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
-               name="full_scan_age"
-               id="full_scan_age"
-              label="Full scan age"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].full_scan_age) }
-              value={this.state.full_scan_age}
-              onChange={this.handleChange('full_scan_age')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
-               name="nis_signature_last_updated"
-               id="nis_signature_last_updated"
-              label="Nis signature last updated"
-              className={classes.textField}
-              type="text"
-              placeholder={ String(this.props.content.standards[0].nis_signature_last_updated) }
-              value={this.state.nis_signature_last_updated}
-              onChange={this.handleChange('nis_signature_last_updated')}
-              margin="normal"
-              variant="outlined"
-            />
-           <TextField
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="antivirus_enabled">Antivirus</InputLabel>
+              <Select
+                value={this.state.antivirus_enabled}
+                onChange={this.handleChange('antivirus_enabled')}
+              >
+              <MenuItem value={true}>enabled</MenuItem>
+                <MenuItem value={false}>disabled</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
                name="antivirus_signature_last_updated"
                id="antivirus_signature_last_updated"
-              label="Antivirus signature last updated"
+              label="Antivirus Signature last update age (max days)"
               className={classes.textField}
               type="text"
               placeholder={ String(this.props.content.standards[0].antivirus_signature_last_updated) }
@@ -149,10 +134,20 @@ class AddStandards extends Component {
               margin="normal"
               variant="outlined"
             />
-           <TextField
+           <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="antispyware_enabled">Antispyware</InputLabel>
+              <Select
+                value={this.state.antispyware_enabled}
+                onChange={this.handleChange('antispyware_enabled')}
+              >
+                <MenuItem value={true}>enabled</MenuItem>
+                <MenuItem value={false}>disabled</MenuItem>
+              </Select>
+              </FormControl>
+            <TextField
                name="antispyware_signature_last_updated"
                id="antispyware_signature_last_updated"
-              label="Antispyware signature last updated"
+              label="Antispyware Signature last update age (max days)"
               className={classes.textField}
               type="text"
               placeholder={ String(this.props.content.standards[0].antispyware_signature_last_updated) }
@@ -162,65 +157,83 @@ class AddStandards extends Component {
               variant="outlined"
             />
             <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="nis_enabled">Nis enabled</InputLabel>
+              <InputLabel htmlFor="nis_enabled">Network Information Service</InputLabel>
               <Select
                 value={this.state.nis_enabled}
                 onChange={this.handleChange('nis_enabled')}
               >
-                <MenuItem value={true}>true</MenuItem>
-                <MenuItem value={false}>false</MenuItem>
+                <MenuItem value={true}>enabled</MenuItem>
+                <MenuItem value={false}>disabled</MenuItem>
               </Select>
             </FormControl>
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="antivirus_enabled">Antivirus enabled</InputLabel>
-              <Select
-                value={this.state.antivirus_enabled}
-                onChange={this.handleChange('antivirus_enabled')}
-              >
-                <MenuItem value={true}>true</MenuItem>
-                <MenuItem value={false}>false</MenuItem>
-              </Select>
-              </FormControl>
+              <TextField
+               name="nis_signature_last_updated"
+               id="nis_signature_last_updated"
+              label="NIS Signature last update age (max days)"
+              className={classes.textField}
+              type="text"
+              placeholder={ String(this.props.content.standards[0].nis_signature_last_updated) }
+              value={this.state.nis_signature_last_updated}
+              onChange={this.handleChange('nis_signature_last_updated')}
+              margin="normal"
+              variant="outlined"
+            />
               <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="antispyware_enabled">Antispyware enabled</InputLabel>
-              <Select
-                value={this.state.antispyware_enabled}
-                onChange={this.handleChange('antispyware_enabled')}
-              >
-                <MenuItem value={true}>true</MenuItem>
-                <MenuItem value={false}>false</MenuItem>
-              </Select>
-              </FormControl>
-              <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="behavior_monitor_enabled">Behavior monitor enabled</InputLabel>
-              <Select
-                value={this.state.behavior_monitor_enabled}
-                onChange={this.handleChange('behavior_monitor_enabled')}
-              >
-                <MenuItem value={true}>true</MenuItem>
-                <MenuItem value={false}>false</MenuItem>
-              </Select>
-              </FormControl>
-              <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="on_access_protection_enabled">On-access protection enabled</InputLabel>
+              <InputLabel htmlFor="on_access_protection_enabled">On-Access Protection</InputLabel>
               <Select
                 value={this.state.on_access_protection_enabled}
                 onChange={this.handleChange('on_access_protection_enabled')}
               >
-                <MenuItem value={true}>true</MenuItem>
-                <MenuItem value={false}>false</MenuItem>
+                <MenuItem value={true}>enabled</MenuItem>
+                <MenuItem value={false}>disabled</MenuItem>
               </Select>
               </FormControl>
+            <TextField
+               name="quick_scan_age"
+               id="quick_scan_age"
+              label="Quick scan age (max days)"
+              className={classes.textField}
+              type="text"
+              placeholder={ String(this.props.content.standards[0].quick_scan_age) }
+              value={this.state.quick_scan_age}
+              onChange={this.handleChange('quick_scan_age')}
+              margin="normal"
+              variant="outlined"
+            />
               <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="real_time_protection_enabled">Real time protection enabled</InputLabel>
+              <InputLabel htmlFor="real_time_protection_enabled">Real-Time Protection</InputLabel>
               <Select
                 value={this.state.real_time_protection_enabled}
                 onChange={this.handleChange('real_time_protection_enabled')}
               >
-                <MenuItem value={true}>true</MenuItem>
-                <MenuItem value={false}>false</MenuItem>
+                <MenuItem value={true}>enabled</MenuItem>
+                <MenuItem value={false}>disabled</MenuItem>
               </Select>
             </FormControl>
+           <TextField
+               name="full_scan_age"
+               id="full_scan_age"
+              label="Full scan age (max days)"
+              className={classes.textField}
+              type="text"
+              placeholder={ String(this.props.content.standards[0].full_scan_age) }
+              value={this.state.full_scan_age}
+              onChange={this.handleChange('full_scan_age')}
+              margin="normal"
+              variant="outlined"
+            />
+           <div className={classes.monitorField}>
+           <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="behavior_monitor_enabled">Behavior Monitor</InputLabel>
+              <Select
+                value={this.state.behavior_monitor_enabled}
+                onChange={this.handleChange('behavior_monitor_enabled')}
+              >
+                <MenuItem value={true}>enabled</MenuItem>
+                <MenuItem value={false}>disabled</MenuItem>
+              </Select>
+              </FormControl>
+           </div>
           <Button
             type="submit"
             onClick={ this.add_standard }
