@@ -28,7 +28,7 @@ const styles = theme => ({
 class Login extends Component {
 
     state = {
-        username: '',
+        email: '',
         password: ''
     }
 
@@ -41,11 +41,11 @@ class Login extends Component {
     login = (e) => {
         e.preventDefault();
         this.props.dispatch(login(
-            this.state.username,
+            this.state.email,
             this.state.password
         ))
         this.setState({
-            username: '',
+            email: '',
             password: ''
         })
     }
@@ -62,12 +62,12 @@ class Login extends Component {
                     onSubmit={ this.login }
                 >
                     <TextField
-                        id="Username"
-                        label="Username"
-                        placeholder="username..."
+                        id="Email"
+                        label="Email"
+                        placeholder="email..."
                         className={classes.textField}
                         value={this.state.username}
-                        onChange={this.handleChange('username')}
+                        onChange={this.handleChange('email')}
                         margin="normal"
                         variant="outlined"
                     />

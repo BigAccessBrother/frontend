@@ -40,7 +40,7 @@ class SecurityStandards extends Component {
                     >
                      <Tab label="New" />
                      <Tab label="Current" />
-                     <Tab label="History" />
+                     {/* <Tab label="History" /> */}
                     </Tabs>
                 </AppBar>
                 { this.state.value === 0 && this.props.content.standards &&
