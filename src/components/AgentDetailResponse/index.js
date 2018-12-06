@@ -22,24 +22,29 @@ const bool_standards = [
   ]
 ]
 
-const int_standards = [
+const date_standards = [
   [
-    'full_scan_age',
-    'quick_scan_age',
     'antispyware_signature_last_updated',
     'antivirus_signature_last_updated',
     'nis_signature_last_updated',
   ],
   [
-    'Last full scan',
-    'Last quick scan',
     'Last antispyware signature update',
     'Last antivirus signature update',
     'Last NIS signature update',
   ]
 ]
 
-
+const int_standards = [
+  [
+    'full_scan_age',
+    'quick_scan_age',
+  ],
+  [
+    'Last full scan',
+    'Last quick scan',
+  ]
+]
 
 class AgentDetailResponse extends Component {
 
@@ -48,9 +53,12 @@ class AgentDetailResponse extends Component {
     if (bool_standards[0].includes(key)) {
       const i = bool_standards[0].indexOf(key);
       return `${bool_standards[1][i]} ${obj[key] ? 'enabled' : 'disabled'}`
+    } else if (date_standards[0].includes(key)) {
+      const i = date_standards[0].indexOf(key);
+      return `${date_standards[1][i]}: ${obj[key]}`
     } else if (int_standards[0].includes(key)) {
       const i = int_standards[0].indexOf(key);
-      return `${int_standards[1][i]} ${obj[key]} days ago`
+      return `${int_standards[1][i]}: ${obj[key]} days ago`
     } else {
       return `${key.replace(/_/g, ' ')}: ${obj[key]}`
     }
@@ -68,7 +76,7 @@ class AgentDetailResponse extends Component {
                 { this.props.expand && this.props.agent.last_response_received ?
                 <ul>
                   { Object.keys(this.props.agent.latest_response).map(key => (
-                    key === 'id' || key === 'agent' || key === 'report' ? null :
+                    key === 'id' || key === 'agent' || key === 'report' || key === 'date_created' ? null :
                     <li key={key}>
                       { this.getLine(key) }
                     </li>
