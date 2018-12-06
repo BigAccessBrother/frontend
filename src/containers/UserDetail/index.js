@@ -68,13 +68,12 @@ class UserDetail extends Component {
               <Typography component="p">
                 { this.props.user.email }
               </Typography>
-              <Typography component="p">
                 { this.getAgents().length ? 
                  <div>
                   Registered agents: { this.getAgents().length }
                   <ul>
                     {
-                      this.getAgents().map(agent => <li>
+                      this.getAgents().map(agent => <li key={ agent.computer_name }>
                         <div>
                           { agent.computer_name }
                         </div> { agent.secure ? 
@@ -86,7 +85,6 @@ class UserDetail extends Component {
                   </ul>
                  </div> :
                 'No regitered agents' } 
-              </Typography>
             </CardContent>
           {/* </CardActionArea> */}
           <CardActions>

@@ -52,7 +52,7 @@ class CreateUser extends Component {
   state = {
         email: '',
         password: '',
-        is_staff: '',
+        is_staff: false,
   }
 
 
@@ -102,13 +102,13 @@ class CreateUser extends Component {
             />
 
             <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="is_staff">Admin</InputLabel>
+              <InputLabel htmlFor="is_staff">Admin privileges</InputLabel>
               <Select
                 value={this.state.is_staff}
                 onChange={this.handleChange('is_staff')}
               >
-                <MenuItem value={true}>true</MenuItem>
-                <MenuItem value={false}>false</MenuItem>
+                <MenuItem value={true}>yes</MenuItem>
+                <MenuItem value={false}>no</MenuItem>
               </Select>
             </FormControl>
 
