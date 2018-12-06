@@ -37,8 +37,9 @@ export const login = (username, password) => (dispatch, getState) => {
         dispatch(getActiveUser());
     })
     .catch(error => {
-        console.log('something went wrong')
-        console.log(error)
+        alert('login failed');
+        console.log('login failed');
+        console.log(error);
     })
 }
 

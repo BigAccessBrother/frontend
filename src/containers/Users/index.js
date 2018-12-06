@@ -40,7 +40,7 @@ class Users extends Component {
                     >
                         <Tab label="All Users" />
                         <Tab label="Create User" />
-                        <Tab label="History" />
+                        {/* <Tab label="History" /> */}
                     </Tabs>
                 </AppBar>
                 { this.state.value === 0 && this.props.content.users &&
