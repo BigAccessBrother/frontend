@@ -63,10 +63,10 @@ class Login extends Component {
                 >
                     <TextField
                         id="Email"
-                        label="Email"
-                        placeholder="email..."
+                        label="Email/Username"
+                        placeholder="email/username..."
                         className={classes.textField}
-                        value={this.state.username}
+                        value={this.state.email}
                         onChange={this.handleChange('email')}
                         margin="normal"
                         variant="outlined"
