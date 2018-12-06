@@ -12,9 +12,7 @@ class Download extends Component {
             <div>
                 { this.props.isLoggedIn ? null : <Redirect to="/" /> }
                 <MainFrame>
-                        <OsInstaller
-                            click={ this.getInstaller }
-                        />
+                        <OsInstaller />
                 </MainFrame>
             </div>
         )
