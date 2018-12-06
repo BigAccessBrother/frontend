@@ -68,7 +68,7 @@ class AgentDetailResponse extends Component {
                 { this.props.expand && this.props.agent.last_response_received ?
                 <ul>
                   { Object.keys(this.props.agent.latest_response).map(key => (
-                    key === 'id' || key === 'agent' ? null :
+                    key === 'id' || key === 'agent' || key === 'report' ? null :
                     <li key={key}>
                       { this.getLine(key) }
                     </li>
