@@ -84,7 +84,7 @@ class UserDetail extends Component {
                     } 
                   </ul>
                  </div> :
-                'No regitered agents' } 
+                'No registered agents' }
             </CardContent>
           {/* </CardActionArea> */}
           <CardActions>
