@@ -74,13 +74,19 @@ class OsInstaller extends Component {
                 </Typography>
               </CardContent>
             <CardActions className={classes.actions}>
+            <a
+                href="https://accessbrother.propulsion-learn.ch/backend/api/agent/installer/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
             <Button 
                 size="small" 
                 color="primary"
-                onClick={ () => this.getInstaller('windows') }    
-            >
+                // onClick={ () => this.getInstaller('windows') }    
+                >
                 Windows 10
             </Button>
+            </a>
             <Button 
                 size="small" 
                 color="primary"
