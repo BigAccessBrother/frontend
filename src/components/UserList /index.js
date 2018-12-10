@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import UserItem from '../UserItem';
-import './style.css';
 import UserDetail from '../../containers/UserDetail';
+import './style.css';
 
 const UserList = props => {
   return (

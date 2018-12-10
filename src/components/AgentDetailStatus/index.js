@@ -12,7 +12,7 @@ const AgentDetailStatus = (props) => {
           }
         >
           <h2>
-                    status: { props.agent.latest_response.report.status }
+            status: { props.agent.latest_response.report.status }
           </h2>
           { props.expand && props.agent.latest_response.report.status !== 'ok'
             ? <ul>
@@ -21,8 +21,7 @@ const AgentDetailStatus = (props) => {
                   <li key={key}>
                     { key.replace(/_/g, ' ') } { props.agent.latest_response.report[key] }
                   </li>
-                )
-                )
+                ))
               }
             </ul>
             : null }

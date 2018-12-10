@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { types } from '../../../constants';
 
-export const getContent = (contentType, endpoint) => (dispatch, getState) => {
+export const getContent = (contentType, endpoint) => dispatch => {
   // this can be used for almost all our GET requests
   // endpoint is the API endpoint that we're sending our request to
   // contenttype is where we store the data in our redux state
@@ -17,12 +17,12 @@ export const getContent = (contentType, endpoint) => (dispatch, getState) => {
         }
       });
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
     });
 };
 
-export const getAgentDetail = agent => (dispatch, getState) => {
+export const getAgentDetail = agent => dispatch => {
   dispatch({ type: types.LOADING });
   axios.get(`response/agent/${agent.id}/`)
     .then(response => {
@@ -36,19 +36,19 @@ export const getAgentDetail = agent => (dispatch, getState) => {
         }
       });
     })
-    .catch(function (error) {
+    .catch(error => {
       console.log(error);
     });
 };
 
-export const getUserDetail = user => (dispatch, getState) => {
+export const getUserDetail = user => dispatch => {
   dispatch({
     type: types.SET_USER_DETAIL,
     payload: { user }
   });
 };
 
-export const activateDeactivateAgent = agent => (dispatch, getState) => {
+export const activateDeactivateAgent = agent => dispatch => {
   dispatch({
     type: types.ACTIVATE_DEACTIVATE_AGENT,
     payload: { agent }
@@ -58,7 +58,7 @@ export const activateDeactivateAgent = agent => (dispatch, getState) => {
   });
 };
 
-export const add_standard = (data, getBack) => (dispatch, getState) => {
+export const addStandard = (data, redirectFn) => dispatch => {
   data.quick_scan_age = parseInt(data.quick_scan_age);
   data.full_scan_age = parseInt(data.full_scan_age);
   data.nis_signature_last_updated = parseInt(data.nis_signature_last_updated);
@@ -68,14 +68,14 @@ export const add_standard = (data, getBack) => (dispatch, getState) => {
   axios.post('standards/', data)
     .then(response => {
       dispatch(getContent('standards', 'standards/'));
-      getBack();
+      redirectFn();
     });
 };
 
-export const create_user = (data, getBack) => (dispatch, getState) => {
+export const createUser = (data, redirectFn) => dispatch => {
   axios.post('users/', data)
     .then(response => {
       dispatch(getContent('users', 'users/'));
-      getBack();
+      redirectFn();
     });
 };
