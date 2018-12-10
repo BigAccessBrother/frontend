@@ -80,7 +80,8 @@ class AgentDetailResponse extends Component {
                   { this.getLine(key) }
                 </li>
             ))}
-            {/* <AgentDetailApps
+            {/* this will come back in once some changes have been made to the back-end
+                  <AgentDetailApps
                     expand={ this.props.expand }
                     apps={ this.props.agent.latest_response.startup_apps }
                   >

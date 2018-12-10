@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import userIcon from '../../assets/icons/account.png';
 import { types } from '../../constants';
-// import CardActionArea from '@material-ui/core/CardActionArea';
 
 const styles = {
   card: {
@@ -54,9 +53,6 @@ class UserDetail extends Component {
     return (
       <Card
         className={classes.card}>
-        {/* <CardActionArea
-            onClick={ this.expand }
-          > */}
         <div className={classes.iconContainer}>
           <img src={userIcon} alt='user' />
         </div>
@@ -85,7 +81,6 @@ class UserDetail extends Component {
             </div>
             : 'No registered agents' }
         </CardContent>
-        {/* </CardActionArea> */}
         <CardActions>
           <Button
             className={classes.close}
@@ -93,7 +88,7 @@ class UserDetail extends Component {
             color='primary'
             onClick={this.close}
           >
-              close
+            close
           </Button>
         </CardActions>
       </Card>

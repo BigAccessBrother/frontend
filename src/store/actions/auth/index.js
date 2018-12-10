@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { types } from '../../../constants';
 
-export const getActiveUser = () => (dispatch, getState) => {
+export const getActiveUser = () => dispatch => {
   // get user profile of active user
   axios.get('users/me/')
     .then(response => {
@@ -18,7 +18,7 @@ export const getActiveUser = () => (dispatch, getState) => {
     });
 };
 
-export const login = (username, password) => (dispatch, getState) => {
+export const login = (username, password) => dispatch => {
   axios.post('auth/token/', { username, password })
     .then(response => {
       // store token in localStorage and state
@@ -40,8 +40,8 @@ export const login = (username, password) => (dispatch, getState) => {
     });
 };
 
-export const checkToken = (store) => {
-  // check if there is an active user
+export const checkToken = store => {
+  // check if there is an active user in state
   if (!store.getState().auth.isLoggedIn) {
     // check if there is a token in localstorage
     if (window.localStorage.getItem('BAB-token')) {

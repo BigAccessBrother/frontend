@@ -68,7 +68,6 @@ class CreateUser extends Component {
     const { classes } = this.props;
     return (
       <div>
-
         <form
           className={classes.container}
           noValidate autoComplete='off'
@@ -96,7 +95,6 @@ class CreateUser extends Component {
             margin='normal'
             variant='outlined'
           />
-
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor='is_staff'>Admin privileges</InputLabel>
             <Select
@@ -107,7 +105,6 @@ class CreateUser extends Component {
               <MenuItem value={false}>no</MenuItem>
             </Select>
           </FormControl>
-
           <Button
             type='submit'
             onClick={this.createUserClick}

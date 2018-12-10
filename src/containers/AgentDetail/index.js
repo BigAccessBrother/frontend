@@ -44,102 +44,103 @@ const styles = {
 };
 
 class AgentDetail extends Component {
-    state = {
+  state = {
+    expand: 0
+  }
+
+  componentWillMount = () => {
+    this.setState({
       expand: 0
-    }
+    });
+  }
 
-    componentWillMount = () => {
-      this.setState({
-        expand: 0
-      });
-    }
+  expand = () => {
+    this.setState({
+      expand: this.state.expand > 0 ? 0 : this.state.expand + 1
+    });
+  }
 
-    expand = () => {
-      this.setState({
-        expand: this.state.expand > 0 ? 0 : this.state.expand + 1
-      });
-    }
+  activateDeactivate = () => {
+    this.props.dispatch(activateDeactivateAgent(this.props.agent));
+  }
 
-    activateDeactivate = () => {
-      this.props.dispatch(activateDeactivateAgent(this.props.agent));
-    }
-
-    close = () => {
-      this.props.dispatch({
-        type: types.SET_AGENT_DETAIL,
-        payload: {
-          data: {
-            agent: {},
-            responses: []
-          }
+  close = () => {
+    this.props.dispatch({
+      type: types.SET_AGENT_DETAIL,
+      payload: {
+        data: {
+          agent: {},
+          responses: []
         }
-      });
-    }
+      }
+    });
+  }
 
-    render () {
-      const { classes } = this.props;
-      return (
-        <Card
-          className={[classes.card, this.props.agent.is_active ? null : classes.disabled]
-            .join(' ')}>
-          <CardActionArea
-            onClick={this.expand}
-          >
-            <div className={classes.container}>
-              <CardMedia
-                className={classes.media}
-                image={monitor}
-                title='machine'
-              />
-              <div className={classes.icon}>
-                <OsIcon type={this.props.agent.latest_response.os_type} />
-              </div>
-              <CardMedia
-                className={classes.media}
-                image={this.props.agent.secure ? check : cancel}
-                title='status'
-              />
+  render () {
+    const { classes } = this.props;
+    return (
+      <Card
+        className={[classes.card, this.props.agent.is_active ? null : classes.disabled]
+          .join(' ')}
+      >
+        <CardActionArea
+          onClick={this.expand}
+        >
+          <div className={classes.container}>
+            <CardMedia
+              className={classes.media}
+              image={monitor}
+              title='machine'
+            />
+            <div className={classes.icon}>
+              <OsIcon type={this.props.agent.latest_response.os_type} />
             </div>
-            <CardContent>
-              <Typography gutterBottom variant='h5' component='h2'>
-                { this.props.agent.computer_name }
-              </Typography>
-              <Typography component='p'>
-                  security status: { this.props.agent.secure ? 'secure' : 'not secure' }
-              </Typography>
-              <Typography component='p'>
-                  owner: { this.props.agent.user.username }
-              </Typography>
-              <AgentDetailResponse
-                agent={this.props.agent}
-                expand={this.state.expand}
-              />
-              <AgentDetailStatus
-                agent={this.props.agent}
-                expand
-              />
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size='small'
-              color='primary'
-              onClick={this.activateDeactivate}
-            >
-              { this.props.agent.is_active ? 'deactivate' : 'activate'} agent
-            </Button>
-            <Button
-              className={classes.close}
-              size='small'
-              color='primary'
-              onClick={this.close}
-            >
-                close
-            </Button>
-          </CardActions>
-        </Card>
-      );
-    }
+            <CardMedia
+              className={classes.media}
+              image={this.props.agent.secure ? check : cancel}
+              title='status'
+            />
+          </div>
+          <CardContent>
+            <Typography gutterBottom variant='h5' component='h2'>
+              { this.props.agent.computer_name }
+            </Typography>
+            <Typography component='p'>
+                security status: { this.props.agent.secure ? 'secure' : 'not secure' }
+            </Typography>
+            <Typography component='p'>
+                owner: { this.props.agent.user.username }
+            </Typography>
+            <AgentDetailResponse
+              agent={this.props.agent}
+              expand={this.state.expand}
+            />
+            <AgentDetailStatus
+              agent={this.props.agent}
+              expand
+            />
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button
+            size='small'
+            color='primary'
+            onClick={this.activateDeactivate}
+          >
+            { this.props.agent.is_active ? 'deactivate' : 'activate'} agent
+          </Button>
+          <Button
+            className={classes.close}
+            size='small'
+            color='primary'
+            onClick={this.close}
+          >
+            close
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
 export default withStyles(styles)(connect()(AgentDetail));

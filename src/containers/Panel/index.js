@@ -11,46 +11,46 @@ import SecurityStandards from '../SecurityStandards';
 import Users from '../Users';
 
 class Admin extends Component {
-    componentWillMount = () => {
-      this.props.dispatch(getContent('agents', 'agent/'));
-    }
+  componentWillMount = () => {
+    this.props.dispatch(getContent('agents', 'agent/'));
+  }
 
-    state = {
-      value: 0
-    };
+  state = {
+    value: 0
+  };
 
-    handleChange = (event, value) => {
-      this.setState({ value });
-    };
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
 
-    render () {
-      return (
-        <div>
-          { this.props.auth.isLoggedIn && this.props.auth.isAdmin ? null : <Redirect to='/' /> }
-          <MainFrame>
-            <AppBar position='static' color='default'>
-              <Tabs
-                value={this.state.value}
-                onChange={this.handleChange}
-                indicatorColor='primary'
-                textColor='primary'
-                fullWidth
-              >
-                <Tab label='Agents' />
-                <Tab label='Security Standards' />
-                <Tab label='Users' />
-              </Tabs>
-            </AppBar>
-            { this.state.value === 0 &&
-            <AgentList /> }
-            { this.state.value === 1 &&
-            <SecurityStandards /> }
-            { this.state.value === 2 &&
-            <Users /> }
-          </MainFrame>
-        </div>
-      );
-    }
+  render () {
+    return (
+      <div>
+        { this.props.auth.isLoggedIn && this.props.auth.isAdmin ? null : <Redirect to='/' /> }
+        <MainFrame>
+          <AppBar position='static' color='default'>
+            <Tabs
+              value={this.state.value}
+              onChange={this.handleChange}
+              indicatorColor='primary'
+              textColor='primary'
+              fullWidth
+            >
+              <Tab label='Agents' />
+              <Tab label='Security Standards' />
+              <Tab label='Users' />
+            </Tabs>
+          </AppBar>
+          { this.state.value === 0 &&
+          <AgentList /> }
+          { this.state.value === 1 &&
+          <SecurityStandards /> }
+          { this.state.value === 2 &&
+          <Users /> }
+        </MainFrame>
+      </div>
+    );
+  }
 }
 
 export default connect(

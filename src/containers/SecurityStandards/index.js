@@ -46,8 +46,8 @@ class SecurityStandards extends Component {
         <AddStandards getBack={this.getBackToCurrentStandard} /> }
         { this.state.value === 1 && this.props.content.standards &&
         <StandardDetail /> }
-        {/* { this.state.value === 2 && */}
-        {/* < History /> } */}
+        {/* { this.state.value === 2 &&
+         < History /> } */}
       </div>
     );
   }
