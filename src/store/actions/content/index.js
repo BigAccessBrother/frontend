@@ -58,7 +58,7 @@ export const activateDeactivateAgent = agent => (dispatch, getState) => {
   });
 };
 
-export const add_standard = (data, getBack) => (dispatch, getState) => {
+export const addStandard = (data, getBack) => (dispatch, getState) => {
   data.quick_scan_age = parseInt(data.quick_scan_age);
   data.full_scan_age = parseInt(data.full_scan_age);
   data.nis_signature_last_updated = parseInt(data.nis_signature_last_updated);
@@ -72,7 +72,7 @@ export const add_standard = (data, getBack) => (dispatch, getState) => {
     });
 };
 
-export const create_user = (data, getBack) => (dispatch, getState) => {
+export const createUser = (data, getBack) => (dispatch, getState) => {
   axios.post('users/', data)
     .then(response => {
       dispatch(getContent('users', 'users/'));
