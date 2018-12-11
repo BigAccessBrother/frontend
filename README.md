@@ -43,7 +43,7 @@ BAB - Security Control for Database Access
 
 
 ## Authors
-Pascal Rüegger
+Pascal Rüegger  
 Anna Wyss
 
 
